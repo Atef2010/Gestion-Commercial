@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 
 public class Fournisseur extends JFrame {
@@ -139,5 +140,4 @@ public class Fournisseur extends JFrame {
 		btnAnnuler.setBounds(543, 81, 89, 23);
 		contentPane.add(btnAnnuler);
 	}
-
 }

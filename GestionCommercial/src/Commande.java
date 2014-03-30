@@ -11,6 +11,10 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
+import javax.swing.JSplitPane;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.UIManager;
 
 
 public class Commande extends JFrame {
@@ -27,6 +31,7 @@ public class Commande extends JFrame {
 	private JTextField textField_8;
 	private JTextField textField_9;
 	private JTextField textField_10;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -49,7 +54,7 @@ public class Commande extends JFrame {
 	 */
 	public Commande() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 888, 415);
+		setBounds(100, 100, 954, 415);
 		this.setTitle("Commande");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -154,5 +159,42 @@ public class Commande extends JFrame {
 		textField_10.setBounds(730, 122, 86, 20);
 		contentPane.add(textField_10);
 		textField_10.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 223, 690, 143);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+			},
+			new String[] {
+				"Quantit\u00E9", "R\u00E9fernce", "Lib\u00E9lle", "Prix_HT", "Remise", "Total"
+			}
+		));
+		scrollPane.setViewportView(table);
+		
+		JButton btnValider = new JButton("Valider");
+		btnValider.setBounds(839, 39, 89, 23);
+		contentPane.add(btnValider);
+		
+		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.setBounds(839, 79, 89, 23);
+		contentPane.add(btnAnnuler);
+		
+		JButton btnAjouter = new JButton("Ajouter");
+		btnAjouter.setBounds(730, 223, 89, 23);
+		contentPane.add(btnAjouter);
+		
+		JButton btnSupprimer = new JButton("Supprimer");
+		btnSupprimer.setBounds(730, 257, 89, 23);
+		contentPane.add(btnSupprimer);
 	}
 }

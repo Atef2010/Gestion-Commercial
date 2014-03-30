@@ -46,7 +46,7 @@ public class FicheProduit extends JFrame {
 	public FicheProduit() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 588, 420);
+		setBounds(100, 100, 680, 362);
 		this.setTitle("Fiche Produit");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -145,11 +145,11 @@ public class FicheProduit extends JFrame {
 		textField_6.setColumns(10);
 		
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(156, 337, 89, 23);
+		btnValider.setBounds(547, 47, 89, 23);
 		panel.add(btnValider);
 		
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(288, 337, 89, 23);
+		btnAnnuler.setBounds(547, 94, 89, 23);
 		panel.add(btnAnnuler);
 	}
 }

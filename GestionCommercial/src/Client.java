@@ -41,7 +41,7 @@ public class Client extends JFrame {
 	 */
 	public Client() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 675, 415);
+		setBounds(100, 100, 713, 420);
 		this.setTitle("Client");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,68 +73,68 @@ public class Client extends JFrame {
 		contentPane.add(lblFax);
 		
 		textField = new JTextField();
-		textField.setBounds(103, 40, 112, 20);
+		textField.setBounds(103, 40, 126, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(103, 82, 112, 20);
+		textField_1.setBounds(103, 82, 126, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
-		textField_2.setBounds(103, 135, 112, 20);
+		textField_2.setBounds(103, 135, 126, 20);
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(103, 214, 112, 20);
+		textField_3.setBounds(103, 214, 126, 20);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
 		textField_4 = new JTextField();
-		textField_4.setBounds(103, 267, 112, 20);
+		textField_4.setBounds(103, 267, 126, 20);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
 		
 		textField_5 = new JTextField();
-		textField_5.setBounds(103, 317, 112, 20);
+		textField_5.setBounds(103, 317, 126, 20);
 		contentPane.add(textField_5);
 		textField_5.setColumns(10);
 		
 		JLabel lblAdresse = new JLabel("Adresse");
-		lblAdresse.setBounds(301, 217, 58, 14);
+		lblAdresse.setBounds(352, 217, 58, 14);
 		contentPane.add(lblAdresse);
 		
 		JLabel lblVille = new JLabel("Ville");
-		lblVille.setBounds(301, 270, 46, 14);
+		lblVille.setBounds(352, 270, 46, 14);
 		contentPane.add(lblVille);
 		
 		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(301, 320, 46, 14);
+		lblEmail.setBounds(352, 320, 46, 14);
 		contentPane.add(lblEmail);
 		
 		textField_6 = new JTextField();
-		textField_6.setBounds(394, 214, 112, 20);
+		textField_6.setBounds(445, 214, 126, 20);
 		contentPane.add(textField_6);
 		textField_6.setColumns(10);
 		
 		textField_7 = new JTextField();
-		textField_7.setBounds(394, 267, 112, 20);
+		textField_7.setBounds(445, 267, 126, 20);
 		contentPane.add(textField_7);
 		textField_7.setColumns(10);
 		
 		textField_8 = new JTextField();
-		textField_8.setBounds(394, 317, 112, 20);
+		textField_8.setBounds(445, 317, 126, 20);
 		contentPane.add(textField_8);
 		textField_8.setColumns(10);
 		
 		JButton btnValider = new JButton("Valider");
-		btnValider.setBounds(543, 39, 89, 23);
+		btnValider.setBounds(586, 39, 89, 23);
 		contentPane.add(btnValider);
 		
 		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.setBounds(543, 81, 89, 23);
+		btnAnnuler.setBounds(586, 81, 89, 23);
 		contentPane.add(btnAnnuler);
 	}
 }
