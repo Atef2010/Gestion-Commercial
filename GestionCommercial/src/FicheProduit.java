@@ -5,12 +5,23 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+
 import java.awt.FlowLayout;
+
 import javax.swing.SwingConstants;
+
 import java.awt.CardLayout;
+
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+
+import dao.Article;
+import GestionComm.Produit;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class FicheProduit extends JFrame {
@@ -117,7 +128,7 @@ public class FicheProduit extends JFrame {
 		comboBox_2.setBounds(88, 265, 112, 20);
 		panel.add(comboBox_2);
 		
-		JLabel lblTva = new JLabel("TVA");
+		JLabel lblTva = new JLabel("Etat");
 		lblTva.setBounds(274, 175, 46, 14);
 		panel.add(lblTva);
 		
@@ -145,6 +156,14 @@ public class FicheProduit extends JFrame {
 		textField_6.setColumns(10);
 		
 		JButton btnValider = new JButton("Valider");
+		btnValider.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Produit p = new  Produit();
+				p.setRef("rdses");
+				new Article().save(p);
+				JOptionPane.showMessageDialog(null, "ssd", "OK", JOptionPane.OK_OPTION);
+			}
+		});
 		btnValider.setBounds(547, 47, 89, 23);
 		panel.add(btnValider);
 		
