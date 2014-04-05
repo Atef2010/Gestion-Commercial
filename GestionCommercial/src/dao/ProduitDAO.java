@@ -9,12 +9,12 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.classic.Session;
 import GestionComm.Produit;
 
-public class Article {
+public class ProduitDAO {
 		
 		Session session;
 		SessionFactory sf;
 
-		public Article()
+		public ProduitDAO()
 		{
 			sf=new AnnotationConfiguration().configure().buildSessionFactory();
 			session=sf.openSession();

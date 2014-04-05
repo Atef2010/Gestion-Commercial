@@ -1,6 +1,15 @@
 package GestionComm;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="produit")
 public class Produit {
+	@GeneratedValue
+	@Id	
 	private int idp  ;
 	private String lib;
 	private String ref;

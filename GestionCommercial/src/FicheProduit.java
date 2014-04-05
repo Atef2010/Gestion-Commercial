@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
-import dao.Article;
+import dao.ProduitDAO;
 import GestionComm.Produit;
 
 import java.awt.event.ActionListener;
@@ -160,7 +160,7 @@ public class FicheProduit extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				Produit p = new  Produit();
 				p.setRef("rdses");
-				new Article().save(p);
+				new ProduitDAO().save(p);
 				JOptionPane.showMessageDialog(null, "ssd", "OK", JOptionPane.OK_OPTION);
 			}
 		});
