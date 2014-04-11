@@ -3,25 +3,25 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="forms-1.3.0.jar" sourcepath="forms-1.3.0-src.zip"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/Util Framework/PostgreSQL/postgresql-9.3-1100.jdbc3.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/antlr-2.7.6.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/asm-3.3.1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/asm-commons-3.3.1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/c3p0-0.9.1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/cglib-2.2.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/commons-collections-3.1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/hibernate-commons-annotations-3.2.0.Final.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/hibernate-core-3.6.10.Final.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/hibernate-entitymanager-3.6.10.Final.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/hibernate-jpamodelgen-1.1.1.Final.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/hibernate-tools-3.6.0.CR1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/javassist-3.12.0.GA.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/jta-1.1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/jtidy-r8-20060801.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/oscache-2.1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/slf4j-api-1.6.1.jar"/>
-	<classpathentry kind="lib" path="E:/Enseignement 2013-2014/EPI/Zied ELLEUCH_PFA/Ons &amp; Rym/hibernate_netbeans 7.4/slf4j-simple-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/asm-3.3.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/asm-commons-3.3.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/hibernate-commons-annotations-3.2.0.Final.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/hibernate-core-3.6.10.Final.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/hibernate-entitymanager-3.6.10.Final.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/hibernate-jpamodelgen-1.1.1.Final.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/hibernate-tools-3.6.0.CR1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/jtidy-r8-20060801.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/oscache-2.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/slf4j-api-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/slf4j-simple-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/lib/postgresql-9.3-1100.jdbc3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

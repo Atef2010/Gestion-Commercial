@@ -8,9 +8,9 @@
     <!--  Paramètres de connexion à la base de données -->
     <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/BaseD</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
     <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">admin</property>
+    <property name="hibernate.connection.password">admin2010</property>
 
     <!-- Comportement pour la conservation des tables -->
     
@@ -22,6 +22,7 @@
     <property name="hibernate.current_session_context_class">thread</property>
     
     <mapping class="GestionComm.Produit"/>
+    <mapping class="GestionComm.Client"/>
 
 
   </session-factory>

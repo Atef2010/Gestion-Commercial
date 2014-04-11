@@ -50,11 +50,11 @@ public class ProduitDAO {
 			return l;
 		}
 		
-		public void updateProduit(int idp,String ref)
+		public void updateProduit(int idp,String ref , String lib)
 		 {
 
 		Transaction tf=session.beginTransaction();
-		org.hibernate.Query q1=session.createQuery("update Produit set ref='"+ref+"'  where idp='"+idp+"'");
+		org.hibernate.Query q1=session.createQuery("update Produit set ref='"+ref+"' where idp='"+idp+"'");
 		int rowCount = q1.executeUpdate();
 		System.out.println("Rows affected: " + rowCount);
 		tf.commit();

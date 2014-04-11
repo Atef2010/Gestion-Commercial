@@ -1,3 +1,4 @@
+package vue;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -27,13 +28,13 @@ import java.awt.event.ActionEvent;
 public class FicheProduit extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
+	private JTextField textref;
+	private JTextField textlib;
+	private JTextField textfournisseur;
+	private JTextField textqteprod;
+	private JTextField textetat;
+	private JTextField textprixht;
+	private JTextField textprixttc;
 
 	/**
 	 * Launch the application.
@@ -73,36 +74,36 @@ public class FicheProduit extends JFrame {
 		panel.add(lblRfrence);
 		
 		JLabel lblFournisseur = new JLabel("Fournisseur");
-		lblFournisseur.setBounds(10, 94, 68, 14);
+		lblFournisseur.setBounds(274, 51, 68, 14);
 		panel.add(lblFournisseur);
 		
-		textField = new JTextField();
-		textField.setBounds(88, 48, 112, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		textref = new JTextField();
+		textref.setBounds(88, 48, 112, 20);
+		panel.add(textref);
+		textref.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(88, 88, 112, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		textlib = new JTextField();
+		textlib.setBounds(88, 88, 112, 20);
+		panel.add(textlib);
+		textlib.setColumns(10);
 		
 		JLabel lblLibell = new JLabel("Libell\u00E9");
-		lblLibell.setBounds(274, 51, 46, 14);
+		lblLibell.setBounds(10, 94, 46, 14);
 		panel.add(lblLibell);
 		
 		JLabel lblQuantitDeProduit = new JLabel("Quantit\u00E9 de Produit");
 		lblQuantitDeProduit.setBounds(274, 94, 112, 14);
 		panel.add(lblQuantitDeProduit);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(390, 48, 112, 20);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		textfournisseur = new JTextField();
+		textfournisseur.setBounds(390, 48, 112, 20);
+		panel.add(textfournisseur);
+		textfournisseur.setColumns(10);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(390, 88, 112, 20);
-		panel.add(textField_3);
-		textField_3.setColumns(10);
+		textqteprod = new JTextField();
+		textqteprod.setBounds(390, 88, 112, 20);
+		panel.add(textqteprod);
+		textqteprod.setColumns(10);
 		
 		JLabel lblMarque = new JLabel("Marque");
 		lblMarque.setBounds(10, 175, 46, 14);
@@ -140,28 +141,36 @@ public class FicheProduit extends JFrame {
 		lblPrixttc.setBounds(274, 268, 46, 14);
 		panel.add(lblPrixttc);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(390, 172, 112, 20);
-		panel.add(textField_4);
-		textField_4.setColumns(10);
+		textetat = new JTextField();
+		textetat.setBounds(390, 172, 112, 20);
+		panel.add(textetat);
+		textetat.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(390, 218, 112, 20);
-		panel.add(textField_5);
-		textField_5.setColumns(10);
+		textprixht = new JTextField();
+		textprixht.setBounds(390, 218, 112, 20);
+		panel.add(textprixht);
+		textprixht.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(390, 265, 112, 20);
-		panel.add(textField_6);
-		textField_6.setColumns(10);
+		textprixttc = new JTextField();
+		textprixttc.setBounds(390, 265, 112, 20);
+		panel.add(textprixttc);
+		textprixttc.setColumns(10);
 		
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Produit p = new  Produit();
-				p.setRef("rdses");
+				p.setRef(textref.getText());
+				p.setEtat(textprixht.getText());
+				p.setLib(textlib.getText());
+				p.setFournisseur(textfournisseur.getText());
+				p.setQteprod(Integer.parseInt(textqteprod.getText()));
+				p.setEtat(textetat.getText());
+				p.setPrix_ht(Integer.parseInt(textprixht.getText()));
+				p.setPrix_ttc(Integer.parseInt(textprixttc.getText()));
+				
 				new ProduitDAO().save(p);
-				JOptionPane.showMessageDialog(null, "ssd", "OK", JOptionPane.OK_OPTION);
+				JOptionPane.showMessageDialog(null, "ref001", "OK", JOptionPane.OK_OPTION);
 			}
 		});
 		btnValider.setBounds(547, 47, 89, 23);

@@ -15,23 +15,33 @@ public class Produit {
 	private String ref;
 	private String etat;
 	private int qteprod;
-	private float prix_ht;
-	private float prix_ttc;
+	private float prixht;
+	private float prixttc;
+	private String fournisseur;
 
 	public Produit() {
 		super();
 	}
 
 	public Produit(int idp,String lib, String ref, String etat, int qteprod,
-			float prix_ht, float prix_ttc) {
+			float prix_ht, float prix_ttc, String fournisseur) {
 		super();
 		this.idp=idp;
 		this.lib = lib;
 		this.ref = ref;
 		this.etat = etat;
 		this.qteprod = qteprod;
-		this.prix_ht = prix_ht;
-		this.prix_ttc = prix_ttc;
+		this.prixht = prix_ht;
+		this.prixttc = prixttc;
+		this.fournisseur=fournisseur;
+	}
+
+	public String getFournisseur() {
+		return fournisseur;
+	}
+
+	public void setFournisseur(String fournisseur) {
+		this.fournisseur = fournisseur;
 	}
 
 	public int getIdp() {
@@ -73,19 +83,19 @@ public class Produit {
 	}
 
 	public float getPrix_ht() {
-		return prix_ht;
+		return prixht;
 	}
 
-	public void setPrix_ht(float prix_ht) {
-		this.prix_ht = prix_ht;
+	public void setPrix_ht(float prixht) {
+		this.prixht = prixht;
 	}
 
-	public float getPrix_ttc() {
-		return prix_ttc;
+	public float getPrixttc() {
+		return prixttc;
 	}
 
-	public void setPrix_ttc(float prix_ttc) {
-		this.prix_ttc = prix_ttc;
+	public void setPrix_ttc(float prixttc) {
+		this.prixttc = prixttc;
 	}
 
 }
