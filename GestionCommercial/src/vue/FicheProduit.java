@@ -19,10 +19,12 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 
 import dao.ProduitDAO;
-import GestionComm.Produit;
+import gestioncomm.Produit;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 
 public class FicheProduit extends JFrame {
@@ -105,15 +107,15 @@ public class FicheProduit extends JFrame {
 		panel.add(textqteprod);
 		textqteprod.setColumns(10);
 		
-		JLabel lblMarque = new JLabel("Marque");
+		JLabel lblMarque = new JLabel("PC");
 		lblMarque.setBounds(10, 175, 46, 14);
 		panel.add(lblMarque);
 		
-		JLabel lblType = new JLabel("Type");
-		lblType.setBounds(10, 221, 46, 14);
+		JLabel lblType = new JLabel("SmartPhone");
+		lblType.setBounds(10, 221, 79, 14);
 		panel.add(lblType);
 		
-		JLabel lblFamille = new JLabel("Famille");
+		JLabel lblFamille = new JLabel("Laptop");
 		lblFamille.setBounds(10, 268, 46, 14);
 		panel.add(lblFamille);
 		
@@ -170,7 +172,7 @@ public class FicheProduit extends JFrame {
 				p.setPrix_ttc(Integer.parseInt(textprixttc.getText()));
 				
 				new ProduitDAO().save(p);
-				JOptionPane.showMessageDialog(null, "ref001", "OK", JOptionPane.OK_OPTION);
+				JOptionPane.showMessageDialog(null, "Produit Ajouter", "OK", JOptionPane.OK_OPTION);
 			}
 		});
 		btnValider.setBounds(547, 47, 89, 23);

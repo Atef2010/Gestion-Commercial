@@ -7,54 +7,54 @@ import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.classic.Session;
-import gestioncomm.Produit;
+import gestioncomm.Commande;
 
-public class ProduitDAO {
+public class CommandeDAO {
 		
 		Session session;
 		SessionFactory sf;
 
-		public ProduitDAO()
+		public CommandeDAO()
 		{
 			sf=new AnnotationConfiguration().configure().buildSessionFactory();
 			session=sf.openSession();
 		}
-		public void save(Produit a)
+		public void save(Commande a)
 		{
 			Transaction tr1=session.beginTransaction();
 			session.save(a);
 			tr1.commit();
 		}
-		public void update(Produit a)
+		public void update(Commande a)
 		{
 			Transaction tr2=session.beginTransaction();
 			session.update(a);
 			tr2.commit();
 		}
-		public void delete(Produit a)
+		public void delete(Commande a)
 		{
 			Transaction tr3=session.beginTransaction();
 			session.delete(a);
 			tr3.commit();
 		}
 		
-		public List<Produit> getProduit()
+		public List<Commande> getCommande()
 		{
-			List<Produit> l=session.createQuery("from Produit").list();
+			List<Commande> l=session.createQuery("from Commande").list();
 			return l;
 		}
 		
-		public List<Produit> getProduitById(int idp)
+		public List<Commande> getCommandeById(int idc)
 		{
-			List<Produit> l=session.createQuery("from Produit where ref="+idp+" ").list();
+			List<Commande> l=session.createQuery("from Produit where numcmd="+idc+" ").list();
 			return l;
 		}
 		
-		public void updateProduit(int idp,String ref , String lib)
+		public void updateCommande(int idc,int numcmd)
 		 {
 
 		Transaction tf=session.beginTransaction();
-		org.hibernate.Query q1=session.createQuery("update Produit set ref='"+ref+"' where idp='"+idp+"'");
+		org.hibernate.Query q1=session.createQuery("update Produit set numdcmd='"+numcmd+"' where idp='"+idc+"'");
 		int rowCount = q1.executeUpdate();
 		System.out.println("Rows affected: " + rowCount);
 		tf.commit();

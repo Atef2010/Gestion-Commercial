@@ -15,14 +15,17 @@
     <!-- Comportement pour la conservation des tables -->
     
     <property name="hbm2ddl.auto">update</property>
-    
+    <property name="hbm2ddl.auto">select</property>
     <!-- Montrer toutes les requêtes générées-->
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     
-    <mapping class="GestionComm.Produit"/>
-    <mapping class="GestionComm.Client"/>
+    <mapping class="gestioncomm.Produit"/>
+    <mapping class="gestioncomm.Client"/>
+    <mapping class="gestioncomm.Fournisseur"/>
+    <mapping class="gestioncomm.Commande"/>
+    
 
 
   </session-factory>

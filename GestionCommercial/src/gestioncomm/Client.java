@@ -1,4 +1,4 @@
-package GestionComm;
+package gestioncomm;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

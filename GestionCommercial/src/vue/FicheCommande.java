@@ -1,3 +1,4 @@
+package vue;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -8,29 +9,38 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.Color;
+
 import javax.swing.border.BevelBorder;
+
 import java.awt.Font;
+
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Commande extends JFrame {
+import gestioncomm.Commande;
+import dao.CommandeDAO;
+import dao.ProduitDAO;
+
+
+public class FicheCommande extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textcode;
+	private JTextField textnom;
+	private JTextField textnumcmd;
 	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
+	private JTextField textqte;
+	private JTextField textref;
+	private JTextField texttotht;
+	private JTextField texttotttc;
 	private JTable table;
 
 	/**
@@ -40,7 +50,7 @@ public class Commande extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Commande frame = new Commande();
+					FicheCommande frame = new FicheCommande();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,7 +62,7 @@ public class Commande extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Commande() {
+	public FicheCommande() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 954, 415);
 		this.setTitle("Commande");
@@ -61,7 +71,7 @@ public class Commande extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblCin = new JLabel("CIN");
+		JLabel lblCin = new JLabel("Code");
 		lblCin.setBounds(10, 43, 46, 14);
 		contentPane.add(lblCin);
 		
@@ -69,33 +79,24 @@ public class Commande extends JFrame {
 		lblNom.setBounds(10, 83, 46, 14);
 		contentPane.add(lblNom);
 		
-		JLabel lblPrenom = new JLabel("Prenom");
-		lblPrenom.setBounds(10, 125, 46, 14);
-		contentPane.add(lblPrenom);
+		textcode = new JTextField();
+		textcode.setBounds(66, 40, 86, 20);
+		contentPane.add(textcode);
+		textcode.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setBounds(66, 40, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(66, 80, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(66, 122, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		textnom = new JTextField();
+		textnom.setBounds(66, 80, 86, 20);
+		contentPane.add(textnom);
+		textnom.setColumns(10);
 		
 		JLabel lblNDeCommande = new JLabel("N\u00B0 de Commande");
 		lblNDeCommande.setBounds(200, 43, 102, 14);
 		contentPane.add(lblNDeCommande);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(314, 40, 86, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textnumcmd = new JTextField();
+		textnumcmd.setBounds(314, 40, 86, 20);
+		contentPane.add(textnumcmd);
+		textnumcmd.setColumns(10);
 		
 		JLabel lblDate = new JLabel("Date");
 		lblDate.setBounds(206, 83, 46, 14);
@@ -114,57 +115,40 @@ public class Commande extends JFrame {
 		lblQuantit.setBounds(444, 83, 68, 14);
 		contentPane.add(lblQuantit);
 		
-		JLabel lblRemise = new JLabel("Remise");
-		lblRemise.setBounds(444, 125, 46, 14);
-		contentPane.add(lblRemise);
+		textqte = new JTextField();
+		textqte.setBounds(521, 80, 86, 20);
+		contentPane.add(textqte);
+		textqte.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(521, 80, 86, 20);
-		contentPane.add(textField_5);
-		textField_5.setColumns(10);
-		
-		textField_6 = new JTextField();
-		textField_6.setBounds(521, 122, 86, 20);
-		contentPane.add(textField_6);
-		textField_6.setColumns(10);
-		
-		textField_7 = new JTextField();
-		textField_7.setBounds(522, 40, 86, 20);
-		contentPane.add(textField_7);
-		textField_7.setColumns(10);
+		textref = new JTextField();
+		textref.setBounds(522, 40, 86, 20);
+		contentPane.add(textref);
+		textref.setColumns(10);
 		
 		JLabel lblTotalHt = new JLabel("Total HT");
 		lblTotalHt.setBounds(653, 43, 67, 14);
 		contentPane.add(lblTotalHt);
 		
-		JLabel lblTotalTva = new JLabel("Total TVA");
-		lblTotalTva.setBounds(653, 83, 67, 14);
-		contentPane.add(lblTotalTva);
-		
 		JLabel lblTotalTtc = new JLabel("Total TTC");
-		lblTotalTtc.setBounds(653, 125, 67, 14);
+		lblTotalTtc.setBounds(653, 83, 67, 14);
 		contentPane.add(lblTotalTtc);
 		
-		textField_8 = new JTextField();
-		textField_8.setBounds(730, 40, 86, 20);
-		contentPane.add(textField_8);
-		textField_8.setColumns(10);
+		texttotht = new JTextField();
+		texttotht.setBounds(730, 40, 86, 20);
+		contentPane.add(texttotht);
+		texttotht.setColumns(10);
 		
-		textField_9 = new JTextField();
-		textField_9.setBounds(730, 80, 86, 20);
-		contentPane.add(textField_9);
-		textField_9.setColumns(10);
-		
-		textField_10 = new JTextField();
-		textField_10.setBounds(730, 122, 86, 20);
-		contentPane.add(textField_10);
-		textField_10.setColumns(10);
+		texttotttc = new JTextField();
+		texttotttc.setBounds(730, 80, 86, 20);
+		contentPane.add(texttotttc);
+		texttotttc.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 223, 690, 143);
+		scrollPane.setBounds(10, 181, 785, 185);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
+		table.setFillsViewportHeight(true);
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null, null},
@@ -182,6 +166,21 @@ public class Commande extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		JButton btnValider = new JButton("Valider");
+		btnValider.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Commande c = new Commande();
+				c.setRef(textref.getText());
+				c.setLib(textnom.getText());
+				c.setFournisseur(textcode.getText());
+				c.setQteprod(Integer.parseInt(textqte.getText()));
+			 	c.setPrixht(Integer.parseInt(texttotht.getText()));
+				c.setPrixttc(Integer.parseInt(texttotttc.getText()));
+
+				
+				new CommandeDAO().save(c);
+				JOptionPane.showMessageDialog(null, "Commande Ajouter", "OK", JOptionPane.OK_OPTION);
+			}
+		});
 		btnValider.setBounds(839, 39, 89, 23);
 		contentPane.add(btnValider);
 		
@@ -190,11 +189,11 @@ public class Commande extends JFrame {
 		contentPane.add(btnAnnuler);
 		
 		JButton btnAjouter = new JButton("Ajouter");
-		btnAjouter.setBounds(730, 223, 89, 23);
+		btnAjouter.setBounds(826, 184, 102, 23);
 		contentPane.add(btnAjouter);
 		
 		JButton btnSupprimer = new JButton("Supprimer");
-		btnSupprimer.setBounds(730, 257, 89, 23);
+		btnSupprimer.setBounds(826, 218, 102, 23);
 		contentPane.add(btnSupprimer);
 	}
 }
