@@ -1,5 +1,7 @@
 package vue;
 
+import gestioncomm.Client;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.sql.PreparedStatement;
@@ -12,16 +14,21 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.classic.Session;
+
 import dao.ClientDAO;
+import dao.ClientTableModel;
+
 import org.hibernate.classic.Session;
+import org.hibernate.mapping.List;
 
 public class ConsulterClient extends JFrame {
 
-	DAO_ModelTable dm ;
+	
 	private JPanel contentPane;
 	private JTable table;
 	private JTable table_1;
@@ -58,19 +65,18 @@ public class ConsulterClient extends JFrame {
 		contentPane.add(scrollPane);
 		
 		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
+		/*table_1.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 				{null, null, null, null, null, null},
 			},
 			new String[] {
-				"Nom", "Prenom", "CIN", "Telephone", "Adresse", "Ville"
+					"CIN","Nom", "Prenom", "Telephone", "Ville", "Adresse"
 			}
-		));
+		));*/
 		scrollPane.setViewportView(table_1);
-		
-		
+		new ClientTableModel().addTableModelListener(table_1);
 		
 		
 	}
