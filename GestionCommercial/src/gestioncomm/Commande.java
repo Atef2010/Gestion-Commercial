@@ -1,8 +1,11 @@
 package gestioncomm;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.crypto.Data;
 
 @Entity
 @Table(name="commande")
@@ -10,69 +13,70 @@ public class Commande {
 	@GeneratedValue
 	@Id	
 	private int idc  ;
-	private String lib;
+	private int  numdcmd;
+	//private String lib;
 	private String ref;
-	private int qteprod;
-	private float prixht;
-	private float prixttc;
-	private String fournisseur;
+	private int qte;
+	private String fr;
+	private Date date ;
 	public Commande(){
 		super();
 		
 	}
-	public Commande (int idc,String lib, String ref, String etat, int qteprod,
-			float prix_ht, float prix_ttc, String fournisseur) {
+	public Commande (int idc,int  numdcmd,Date date, String ref, String fr ,int qte) {
 		super();
+		
 		this.idc=idc;
-		this.lib = lib;
+		this.numdcmd=numdcmd;
+		this.date = date;
 		this.ref = ref;
-		this.qteprod = qteprod;
-		this.prixht = prix_ht;
-		this.prixttc = prixttc;
-		this.fournisseur=fournisseur;
+		this.fr = fr;
+		this.qte=qte;
+		
 	}
 	public int getIdc() {
 		return idc;
 	}
+	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
 	public void setIdc(int idc) {
 		this.idc = idc;
 	}
-	public String getLib() {
+	public int getNumdcmd() {
+		return numdcmd;
+	}
+	public void setNumdcmd(int numdcmd) {
+		this.numdcmd = numdcmd;
+	}
+	/*public String getLib() {
 		return lib;
 	}
 	public void setLib(String lib) {
 		this.lib = lib;
-	}
+	}*/
 	public String getRef() {
 		return ref;
 	}
 	public void setRef(String ref) {
 		this.ref = ref;
 	}
-	public int getQteprod() {
-		return qteprod;
+	public int getQte() {
+		return qte;
 	}
-	public void setQteprod(int qteprod) {
-		this.qteprod = qteprod;
+	public void setQte(int qte) {
+		this.qte = qte;
 	}
-	public float getPrixht() {
-		return prixht;
+	public String getFr() {
+		return fr;
 	}
-	public void setPrixht(float prixht) {
-		this.prixht = prixht;
+	public void setFr(String fr) {
+		this.fr = fr;
 	}
-	public float getPrixttc() {
-		return prixttc;
-	}
-	public void setPrixttc(float prixttc) {
-		this.prixttc = prixttc;
-	}
-	public String getFournisseur() {
-		return fournisseur;
-	}
-	public void setFournisseur(String fournisseur) {
-		this.fournisseur = fournisseur;
-	}
-
-
+	
+	
 }

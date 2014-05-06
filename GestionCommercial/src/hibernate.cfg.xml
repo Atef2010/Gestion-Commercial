@@ -25,6 +25,11 @@
     <mapping class="gestioncomm.Client"/>
     <mapping class="gestioncomm.Fournisseur"/>
     <mapping class="gestioncomm.Commande"/>
+    <mapping class="gestioncomm.Pcbureau"/>
+     <mapping class="gestioncomm.Smartphone"/>
+     <mapping class="gestioncomm.Laptop"/>
+     <mapping class="gestioncomm.Facture"/>
+    
     
 
 

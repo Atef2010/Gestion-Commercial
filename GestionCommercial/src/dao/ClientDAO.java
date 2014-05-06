@@ -42,6 +42,11 @@ public class ClientDAO {
 	public List<Client> getClient()
 	{
 		List<Client> l=session.createQuery("from Client").list();
+		for (int i=0;i<100;i++)
+		{
+			System.out.println(l.get(i).getCin()+"  "+l.get(i).getNom()+"  "+l.get(i).getPrenom()+"  "+l.get(i).getTel());
+		
+		}
 		return l;
 	}
 	
@@ -55,7 +60,7 @@ public class ClientDAO {
 	 {
 
 	Transaction tf=session.beginTransaction();
-	org.hibernate.Query q1=session.createQuery("update Client set ref='"+cin+"' where idp='"+idp+"'");
+	org.hibernate.Query q1=session.createQuery("update Client set ref='"+cin+"' where idp='"+29+"'");
 	int rowCount = q1.executeUpdate();
 	System.out.println("Rows affected: " + rowCount);
 	tf.commit();

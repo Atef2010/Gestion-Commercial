@@ -1,5 +1,6 @@
 package vue;
 import java.awt.BorderLayout;
+import java.awt.TextArea;
 import java.util.Scanner;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -15,12 +16,17 @@ import javax.swing.*;
 import gestioncomm.Client;
 import dao.ClientDAO;
 import dao.ProduitDAO;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.Label;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+
 import java.awt.Font;
+
 import javax.swing.border.TitledBorder;
+
 import java.awt.Color;
 
 public class FicheClient extends JFrame {
@@ -32,7 +38,6 @@ public class FicheClient extends JFrame {
 	private JTextField textprenom;
 	private JTextField textcodepostal;
 	private JTextField texttel;
-	private JTextField textville;
 	/**
 	 * Launch the application.
 	 */
@@ -53,41 +58,216 @@ public class FicheClient extends JFrame {
 	 * Create the frame.
 	 */
 	public FicheClient() {
-		this.setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 788, 403);
+		setResizable(false);
 		this.setTitle("FicheClient");
+		setBounds(100, 100, 788, 403);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblCode = new JLabel("CIN");
-		lblCode.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\thumbtack-red.png"));
+		lblCode.setIcon(null);
 		lblCode.setBounds(20, 46, 69, 37);
 		contentPane.add(lblCode);
 		
 		JLabel lblNom = new JLabel("Nom");
-		lblNom.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\thumbtack-yellow.png"));
+		lblNom.setIcon(null);
 		lblNom.setBounds(20, 94, 89, 32);
 		contentPane.add(lblNom);
 		
 		JLabel lblPrenom = new JLabel("Prenom");
-		lblPrenom.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\thumbtack-green.png"));
+		lblPrenom.setIcon(null);
 		lblPrenom.setBounds(20, 137, 89, 29);
 		contentPane.add(lblPrenom);
 		
+		final JComboBox comboBoxville = new JComboBox();
+		comboBoxville.setBounds(120, 298, 125, 28);
+		final JTextArea textadresse = new JTextArea();
+		
+		JLabel lblAdresse = new JLabel("Adresse");
+		lblAdresse.setBounds(295, 274, 89, 27);
+		contentPane.add(lblAdresse);
+		
+		JButton btnValider = new JButton("Ajouter");
+		btnValider.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\16x16\\plus.png"));
+		btnValider.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				String cin=textcin.getText();
+				String nom=textnom.getText();
+				String prenom = textprenom.getText();
+				String codepostal=textcodepostal.getText();
+				String adr = textadresse.getText();
+				String ville = comboBoxville.getSelectedItem().toString();
+				String msg="";
+				Client c = new Client();
+				 if(textcin.getText().length()!=8)
+			      {
+					 msg+="CIN Non Valide  \n"; 
+			      }
+				 if(cin.compareTo("")==0)
+			      {
+			       msg+="Vous devez tapper votre CIN \n";
+			      }
+			      if(nom.compareTo("")==0 ) 
+			      {
+			       msg+="Vous devez tapper votre nom \n";
+			      }
+			      if(prenom.compareTo("")==0)
+			      {
+			       msg+="Vous devez tapper votre prenom \n";
+			      }
+			      if(codepostal.compareTo("")==0)
+			      {
+			       msg+="Vous devez tapper votre Code Postal \n";
+			      }
+			      if(ville.compareTo("")==0)
+			      {
+			       msg+="Vous devez tapper votre Ville \n";
+			      }
+			      if(msg.compareTo("")==0)
+			      {
+			       System.out.println(msg);
+			      }
+			      else
+			      {
+					JOptionPane.showMessageDialog(null,msg,"Erreur",JOptionPane.WARNING_MESSAGE);
+			      }
+			     
+			  
+			      if (msg=="")
+			      {
+				c.setCin(textcin.getText());
+				c.setNom(textnom.getText());
+				c.setPrenom(textprenom.getText());
+				c.setCodepostal(textcodepostal.getText());
+				c.setTel(texttel.getText());
+				c.setAdresse(textadresse.getText());
+			
+				new ClientDAO().save(c);
+			     
+			      JOptionPane.showMessageDialog(null,  "Client Ajouter", "OK ", JOptionPane.INFORMATION_MESSAGE);
+				
+			      System.exit(0);
+			      }   
+			}
+			
+		});
+		btnValider.setBounds(662, 39, 101, 23);
+		contentPane.add(btnValider);
+		
+		JButton btnAnnuler = new JButton("Annuler");
+		btnAnnuler.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\16x16\\busy.png"));
+		btnAnnuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				textcin.setText(null);
+				textcodepostal.setText(null);
+				textnom.setText(null);
+				textprenom.setText(null);
+				texttel.setText(null);
+				comboBoxville.setSelectedItem(null);
+				
+			}
+		});
+		btnAnnuler.setBounds(662, 81, 101, 23);
+		contentPane.add(btnAnnuler);
+		
+		JLabel label = DefaultComponentFactory.getInstance().createTitle("");
+		label.setIcon(new ImageIcon("C:\\Users\\real\\Desktop\\eclipce\\Gestion-Commercial\\Gestion-Commercial\\GestionCommercial\\src\\Image\\aide-numericable.png"));
+		label.setBounds(363, 1, 300, 256);
+		contentPane.add(label);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Information Client", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 255)));
+		panel_3.setBounds(10, 0, 653, 360);
+		contentPane.add(panel_3);
+		panel_3.setLayout(null);
+		
 		JLabel lblCodePostal = new JLabel("Code Postal");
-		lblCodePostal.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\flag-blue.png"));
-		lblCodePostal.setBounds(20, 222, 101, 33);
-		contentPane.add(lblCodePostal);
+		lblCodePostal.setBounds(10, 183, 112, 33);
+		panel_3.add(lblCodePostal);
+		
+		textcodepostal = new JTextField();
+		textcodepostal.setFont(new Font("Times New Roman", Font.ITALIC, 15));
+		textcodepostal.setBounds(120, 185, 126, 28);
+		panel_3.add(textcodepostal);
+		textcodepostal.setToolTipText("Saisie le code postal");
+		textcodepostal.setColumns(10);
+		
+		texttel = new JTextField();
+		texttel.setFont(new Font("Times New Roman", Font.ITALIC, 15));
+		texttel.setBounds(120, 240, 126, 28);
+		panel_3.add(texttel);
+		texttel.setToolTipText("Saisie le numero de telephone");
+		texttel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+
+	             char car = evt.getKeyChar(); 
+	             
+	             if((car<'0' || car>'9')) 
+	              evt.consume(); 
+	            
+				}
+		});
+		texttel.setColumns(10);
 		
 		JLabel lblTlphone = new JLabel("T\u00E9l\u00E9phone");
-		lblTlphone.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\iphone.png"));
-		lblTlphone.setBounds(20, 271, 101, 32);
-		contentPane.add(lblTlphone);
+		lblTlphone.setBounds(10, 241, 101, 32);
+		panel_3.add(lblTlphone);
+		
+		JLabel lblVille = new JLabel("Ville");
+		lblVille.setBounds(10, 295, 69, 27);
+		panel_3.add(lblVille);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(346, 268, 266, 68);
+		panel_3.add(scrollPane);
+		
+		
+		scrollPane.setViewportView(textadresse);
+		textadresse.setToolTipText("Saisie l'adresse");
+		textadresse.setFont(new Font("Times New Roman", Font.ITALIC, 15));
+		
+		panel_3.add(comboBoxville);
+		comboBoxville.setMaximumRowCount(3);
+		comboBoxville.addItem("");   
+		comboBoxville.addItem("Mahdia");
+		comboBoxville.addItem("Monastir");
+		comboBoxville.addItem("Tunis"); 
+		comboBoxville.addItem("Nabeul");
+		comboBoxville.addItem("Sousse");
+		comboBoxville.addItem("Ariana");       
+		comboBoxville.addItem("Béja");           
+		comboBoxville.addItem("Ben Arous");            
+		comboBoxville.addItem("Bizerte");
+		comboBoxville.addItem("Gabès");
+		comboBoxville.addItem("Gafsa");
+		comboBoxville.addItem("Jendouba");           
+		comboBoxville.addItem("Kairouan");            
+		comboBoxville.addItem("Kasserine");
+		comboBoxville.addItem("Kébili");
+		comboBoxville.addItem("Le Kef");
+		comboBoxville.addItem("La Manouba");            
+		comboBoxville.addItem("Médenine");
+		comboBoxville.addItem("Sfax");           
+		comboBoxville.addItem("Sidi Bouzid");            
+		comboBoxville.addItem("Siliana");
+		comboBoxville.addItem("Tataouine");
+		comboBoxville.addItem("Tozeur");           
+		comboBoxville.addItem("Zaghouan");
 		
 		textcin = new JTextField();
+		textcin.setBounds(120, 43, 126, 28);
+		panel_3.add(textcin);
+		textcin.setFont(new Font("Times New Roman", Font.ITALIC, 15));
 		textcin.setToolTipText("Saisie le cin");
 		textcin.addKeyListener(new KeyAdapter() {
 			@Override
@@ -101,159 +281,39 @@ public class FicheClient extends JFrame {
 			}
 				
 		});
-		textcin.setBounds(131, 54, 126, 20);
-		contentPane.add(textcin);
 		textcin.setColumns(10);
 		
 		textnom = new JTextField();
+		textnom.setFont(new Font("Times New Roman", Font.ITALIC, 15));
+		textnom.setBounds(120, 90, 126, 28);
+		panel_3.add(textnom);
 		textnom.setToolTipText("Saisie le nom");
 		textnom.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent evt) {
 				char car = evt.getKeyChar(); 
 	             
-	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')) 
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
 	              evt.consume(); 
 			}
 		});
-		textnom.setBounds(131, 100, 126, 20);
-		contentPane.add(textnom);
 		textnom.setColumns(10);
 		
 		textprenom = new JTextField();
+		textprenom.setFont(new Font("Tahoma", Font.ITALIC, 15));
+		textprenom.setBounds(120, 134, 126, 28);
+		panel_3.add(textprenom);
 		textprenom.setToolTipText("Saisie le prenom");
 		textprenom.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent evt) {
 				char car = evt.getKeyChar(); 
 	             
-	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')) 
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
 	              evt.consume(); 
 			}
 		});
-		textprenom.setBounds(131, 141, 126, 20);
-		contentPane.add(textprenom);
 		textprenom.setColumns(10);
-		
-		textcodepostal = new JTextField();
-		textcodepostal.setToolTipText("Saisie le code postal");
-		textcodepostal.setBounds(131, 228, 126, 20);
-		contentPane.add(textcodepostal);
-		textcodepostal.setColumns(10);
-		
-		texttel = new JTextField();
-		texttel.setToolTipText("Saisie le numero de telephone");
-		texttel.setText("+216 ");
-		texttel.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent evt) {
-
-	             char car = evt.getKeyChar(); 
-	             
-	             if((car<'0' || car>'9')) 
-	              evt.consume(); 
-	            
-				}
-		});
-		texttel.setBounds(131, 277, 126, 20);
-		contentPane.add(texttel);
-		texttel.setColumns(10);
-		
-		JLabel lblAdresse = new JLabel("Adresse");
-		lblAdresse.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\32x32\\address.png"));
-		lblAdresse.setBounds(295, 274, 89, 27);
-		contentPane.add(lblAdresse);
-		
-		JLabel lblVille = new JLabel("Ville");
-		lblVille.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\pc.de-essen-icon-pack\\32x32\\home.png"));
-		lblVille.setBounds(20, 314, 69, 27);
-		contentPane.add(lblVille);
-		
-		textville = new JTextField();
-		textville.setToolTipText("Saisie le ville");
-		textville.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')) 
-	              evt.consume(); 
-			}
-		});
-		textville.setBounds(131, 317, 126, 20);
-		contentPane.add(textville);
-		textville.setColumns(10);
-		
-		JButton btnValider = new JButton("Valider");
-		btnValider.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				String cin=textcin.getText();
-				Client c = new Client();
-				if(cin.equals(""))
-					
-				c.setCin(textcin.getText());
-				c.setNom(textnom.getText());
-				c.setPrenom(textprenom.getText());
-				c.setCodepostal(textcodepostal.getText());
-				c.setTel(texttel.getText());
-				c.setVille(textville.getText());
-				
-				new ClientDAO().save(c);
-				JOptionPane.showMessageDialog(null, "Client Ajouter ", "OK", JOptionPane.OK_OPTION);
-			}
-		});
-		btnValider.setBounds(662, 39, 89, 23);
-		contentPane.add(btnValider);
-		
-		JButton btnAnnuler = new JButton("Annuler");
-		btnAnnuler.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				textcin.setText(null);
-				textcodepostal.setText(null);
-				textnom.setText(null);
-				textprenom.setText(null);
-				texttel.setText(null);
-				textville.setText(null);
-			}
-		});
-		btnAnnuler.setBounds(662, 81, 89, 23);
-		contentPane.add(btnAnnuler);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Saisir", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 255)));
-		panel_1.setBounds(10, 1, 269, 190);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setToolTipText("Saisie le CIN");
-		panel.setBounds(10, 27, 249, 149);
-		panel_1.add(panel);
-		
-		JLabel label = DefaultComponentFactory.getInstance().createTitle("");
-		label.setIcon(new ImageIcon("C:\\Users\\real\\Desktop\\eclipce\\Gestion-Commercial\\Gestion-Commercial\\GestionCommercial\\src\\Image\\aide-numericable.png"));
-		label.setBounds(363, 1, 300, 256);
-		contentPane.add(label);
-		
-		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("New JGoodies title");
-		lblNewJgoodiesTitle.setBounds(77, 11, 88, 14);
-		contentPane.add(lblNewJgoodiesTitle);
-		
-		JTextArea textadresse = new JTextArea();
-		textadresse.setToolTipText("Saisie l'adresse");
-		textadresse.setFont(new Font("Times New Roman", Font.ITALIC, 13));
-		textadresse.setText("Saisir Votre Adresse ");
-		textadresse.setBounds(394, 276, 258, 68);
-		contentPane.add(textadresse);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Adresse", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
-		panel_3.setBounds(10, 196, 653, 165);
-		contentPane.add(panel_3);
-		panel_3.setLayout(null);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(10, 212, 645, 142);

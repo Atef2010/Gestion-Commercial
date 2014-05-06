@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Fournisseur {
 	@GeneratedValue
 	@Id	
-	private int idp  ;
+	private int idf  ;
 	private String code ;
 	private String nom;
 	private String prenom;
@@ -24,7 +24,7 @@ public class Fournisseur {
 	}
 	public Fournisseur(String code,String nom,String prenom,String tel,String ville,String adresse,String codepostal)
 	{
-		this.idp=idp;
+		this.idf=idf;
 		this.code=code;
 		this.nom=nom;
 		this.prenom=prenom;
@@ -35,10 +35,10 @@ public class Fournisseur {
 	}
 	
 	public int getIdp() {
-		return idp;
+		return idf;
 	}
-	public void setIdp(int idp) {
-		this.idp = idp;
+	public void setIdp(int idf) {
+		this.idf = idf;
 	}
 	public String getCode() {
 		return code;
@@ -85,3 +85,4 @@ public class Fournisseur {
 	
 
 }
+

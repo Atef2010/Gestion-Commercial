@@ -1,7 +1,11 @@
 package vue;
 
+import gestioncomm.Fournisseur;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,16 +13,27 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Window.Type;
+import java.text.DateFormat;
 import javax.swing.JLabel;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.text.DateFormat;
+import java.util.Date;
+import javax.swing.*;
+import javax.swing.border.*;
 
 public class GestionCommerciale extends JFrame {
 
-	private JPanel contentPane;
-
+	   private JPanel contentPane;
+	   //private Timer minuteur = new Timer(1000, this);
+	   private JLabel heure = new JLabel();
+	   private DateFormat présentation = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM);
 	/**
 	 * Launch the application.
 	 */
@@ -39,8 +54,22 @@ public class GestionCommerciale extends JFrame {
 	 * Create the frame.
 	 */
 	public GestionCommerciale() {
+		super();
+		heure.setFont(new Font("Goudy Stout", Font.BOLD+Font.ITALIC, 32));
+	      heure.setHorizontalAlignment(JLabel.CENTER);
+	    //  heure.setBorder(BorderFactory.createLoweredBevelBorder());
+	    
+	      JLabel  background=new JLabel(new ImageIcon("C:/Users/Mohamed/Desktop/logo 600x6004.png"));
+			 background.setLayout(new FlowLayout(0,30,10));
+	      
+	    
+	    // add(heure, BorderLayout.NORTH);
+	  add(heure, BorderLayout.CENTER);
+	     add(background, BorderLayout.SOUTH )  ;
 		setTitle("Gestion Commerciale");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 966, 734);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -60,6 +89,12 @@ public class GestionCommerciale extends JFrame {
 		mnClient.add(mntmAjouterClient);
 		
 		JMenuItem mntmModifierClient = new JMenuItem("Modifier Client");
+		mntmModifierClient.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ConsulterClient cc = new ConsulterClient();
+				cc.show();
+			}
+		});
 		mntmModifierClient.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\art-knife.png"));
 		mnClient.add(mntmModifierClient);
 		
@@ -75,19 +110,56 @@ public class GestionCommerciale extends JFrame {
 		menuBar.add(mnFournisseur);
 		
 		JMenuItem mntmAjouterFournisseur = new JMenuItem("Ajouter Fournisseur");
+		mntmAjouterFournisseur.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\add.png"));
+		mntmAjouterFournisseur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FicheFournisseur f =  new FicheFournisseur();
+				f.show();
+			}
+		});
 		mnFournisseur.add(mntmAjouterFournisseur);
 		
 		JMenuItem mntmModifierFournisseur = new JMenuItem("Modifier Fournisseur");
+		mntmModifierFournisseur.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\art-knife.png"));
+		mntmModifierFournisseur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsulterFournisseur cf = new ConsulterFournisseur();
+				cf.show();
+			}
+		});
 		mnFournisseur.add(mntmModifierFournisseur);
 		
 		JMenuItem mntmSupprimerFournisseur = new JMenuItem("Supprimer Fournisseur");
+		mntmSupprimerFournisseur.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\remove.png"));
+		mntmSupprimerFournisseur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsulterFournisseur cf = new ConsulterFournisseur();
+				cf.show();
+			}
+		});
 		mnFournisseur.add(mntmSupprimerFournisseur);
 		
 		JMenuItem mntmConsulterFournisseur = new JMenuItem("Consulter Fournisseur");
+		mntmConsulterFournisseur.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\document.png"));
+		mntmConsulterFournisseur.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsulterFournisseur cf = new ConsulterFournisseur();
+			}
+		});
 		mnFournisseur.add(mntmConsulterFournisseur);
 		
 		JMenu mnArticle = new JMenu("Article");
 		menuBar.add(mnArticle);
+		
+		JMenuItem mntmAjouterArticle = new JMenuItem("Ajouter Article");
+		mntmAjouterArticle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Article a = new Article();
+				a.show();
+			}
+		});
+		mntmAjouterArticle.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\add.png"));
+		mnArticle.add(mntmAjouterArticle);
 		
 		JMenu mnFacture = new JMenu("Facture");
 		menuBar.add(mnFacture);
@@ -95,8 +167,15 @@ public class GestionCommerciale extends JFrame {
 		JMenu mnCommande = new JMenu("Commande");
 		menuBar.add(mnCommande);
 		
-		JMenu mnPaiement = new JMenu("Paiement");
-		menuBar.add(mnPaiement);
+		JMenuItem mntmGrerCommande = new JMenuItem("G\u00E9rer Commande");
+		mntmGrerCommande.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FicheCommande c = new FicheCommande();
+				c.show();
+			}
+		});
+		mntmGrerCommande.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\32x32\\old-versions.png"));
+		mnCommande.add(mntmGrerCommande);
 		
 		JMenu mnStock = new JMenu("Stock");
 		menuBar.add(mnStock);
@@ -104,10 +183,5 @@ public class GestionCommerciale extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\real\\Desktop\\1900449_1386007028337202_2064983812_o.jpg"));
-		lblNewLabel.setBounds(0, 0, 950, 675);
-		contentPane.add(lblNewLabel);
 	}
 }

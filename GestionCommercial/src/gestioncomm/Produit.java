@@ -3,10 +3,13 @@ package gestioncomm;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="produit")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Produit {
 	@GeneratedValue
 	@Id	
@@ -44,11 +47,15 @@ public class Produit {
 		this.fournisseur = fournisseur;
 	}
 
+	
+
 	public int getIdp() {
 		return idp;
 	}
 
-	
+	public void setIdp(int idp) {
+		this.idp = idp;
+	}
 
 	public String getLib() {
 		return lib;

@@ -39,13 +39,18 @@ public class FournisseurDAO {
 	
 	public List<Fournisseur> getFournisseur()
 	{
-		List<Fournisseur> l=session.createQuery("from Fournisseur").list();
+		List<Fournisseur> l=session.createQuery("from fournisseur").list();
+		for (int i=0;i<100;i++)
+		{
+			System.out.println(l.get(i).getCode()+"  "+l.get(i).getNom()+"  "+l.get(i).getPrenom()+"  "+l.get(i).getTel());
+		
+		}
 		return l;
 	}
 	
-	public List<Fournisseur> getClientById(int idp)
+	public List<Fournisseur> getFournisseurById(int idf)
 	{
-		List<Fournisseur> l=session.createQuery("from Fournisseur where cin="+idp+" ").list();
+		List<Fournisseur> l=session.createQuery("from fournisseur where code="+idf+" ").list();
 		return l;
 	}
 	
@@ -53,7 +58,7 @@ public class FournisseurDAO {
 	 {
 
 	Transaction tf=session.beginTransaction();
-	org.hibernate.Query q1=session.createQuery("update Client set ref='"+code+"' where idp='"+idp+"'");
+	org.hibernate.Query q1=session.createQuery("update fournisseur set ref='"+code+"' where idp='"+idp+"'");
 	int rowCount = q1.executeUpdate();
 	System.out.println("Rows affected: " + rowCount);
 	tf.commit();

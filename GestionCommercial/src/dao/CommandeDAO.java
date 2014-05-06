@@ -3,10 +3,10 @@ package dao;
 import java.util.List;
 
 import org.hibernate.Transaction;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.classic.Session;
+
 import gestioncomm.Commande;
 
 public class CommandeDAO {
@@ -41,20 +41,25 @@ public class CommandeDAO {
 		public List<Commande> getCommande()
 		{
 			List<Commande> l=session.createQuery("from Commande").list();
+			for (int i=0;i<100;i++)
+			{
+				System.out.println(l.get(i).getFr()+"  "+l.get(i).getDate()+"  "+l.get(i).getNumdcmd()+"  "+l.get(i).getQte());
+			
+			}
 			return l;
 		}
 		
 		public List<Commande> getCommandeById(int idc)
 		{
-			List<Commande> l=session.createQuery("from Produit where numcmd="+idc+" ").list();
+			List<Commande> l=session.createQuery("from Commande where numcmd="+idc+" ").list();
 			return l;
 		}
 		
-		public void updateCommande(int idc,int numcmd)
+		public void updateCommande(int idc,String numdcmd)
 		 {
 
 		Transaction tf=session.beginTransaction();
-		org.hibernate.Query q1=session.createQuery("update Produit set numdcmd='"+numcmd+"' where idp='"+idc+"'");
+		org.hibernate.Query q1=session.createQuery("update Commande set numdcmd='"+numdcmd+"' where idc='"+idc+"'");
 		int rowCount = q1.executeUpdate();
 		System.out.println("Rows affected: " + rowCount);
 		tf.commit();
