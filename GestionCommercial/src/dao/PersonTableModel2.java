@@ -36,13 +36,13 @@
 
            public int getColumnCount()
            {
-               return 8;
+               return 7;
            }
 
            public Object getValueAt(int rowIndex, int columnIndex)
            {
            	Fournisseur p=FournisseurList.get(rowIndex);
-               Object[] values=new Object[]{p.getIdp(),p.getCode(),p.getNom(),p.getPrenom(),
+               Object[] values=new Object[]{p.getIdp(),p.getCode(),p.getNom(),
                        p.getTel(),p.getVille(),p.getAdresse(),p.getCodepostal()};
                System.out.println(values[columnIndex]);
                return values[columnIndex];
@@ -51,7 +51,7 @@
            @Override
            public String getColumnName(int column)
            {
-               String[] columnNames=new String[]{"id","Code","nom","Prenom","tel","Ville","Adresse","Code Postal"};
+               String[] columnNames=new String[]{"id","Code societe","nom societe","tel","Ville","Adresse","Code Postal"};
                return columnNames[column];
            }
        }

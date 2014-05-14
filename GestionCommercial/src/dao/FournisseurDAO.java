@@ -40,11 +40,7 @@ public class FournisseurDAO {
 	public List<Fournisseur> getFournisseur()
 	{
 		List<Fournisseur> l=session.createQuery("from fournisseur").list();
-		for (int i=0;i<100;i++)
-		{
-			System.out.println(l.get(i).getCode()+"  "+l.get(i).getNom()+"  "+l.get(i).getPrenom()+"  "+l.get(i).getTel());
 		
-		}
 		return l;
 	}
 	

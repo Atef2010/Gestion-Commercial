@@ -71,12 +71,13 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
-
-import com.jgoodies.looks.FontPolicies;
+import com.jgoodies.*;
+//import com.jgoodies.l
+/*import com.jgoodies.looks.FontPolicies;
 import com.jgoodies.looks.FontPolicy;
 import com.jgoodies.looks.FontSet;
 import com.jgoodies.looks.FontSets;
-import com.jgoodies.looks.plastic.PlasticLookAndFeel;
+import com.jgoodies.looks.plastic.PlasticLookAndFeel;*/
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDayChooser;

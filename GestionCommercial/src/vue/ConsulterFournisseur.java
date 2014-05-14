@@ -100,15 +100,15 @@ public class ConsulterFournisseur extends JFrame {
 				String id=(model.getValueAt(t.getSelectedRow(),0).toString());
 				String code=(String)(model.getValueAt(t.getSelectedRow(),1));
 				String nom=(String)(model.getValueAt(t.getSelectedRow(),2));
-				String prenom=(String)model.getValueAt(t.getSelectedRow(),3);
-				String tel=(String)model.getValueAt(t.getSelectedRow(),4);
-				String ville=(String)model.getValueAt(t.getSelectedRow(),5);
-				String adresse=(String)model.getValueAt(t.getSelectedRow(),6);
-				String codepostal=(String)model.getValueAt(t.getSelectedRow(),7);
+				
+				String tel=(String)model.getValueAt(t.getSelectedRow(),3);
+				String ville=(String)model.getValueAt(t.getSelectedRow(),4);
+				String adresse=(String)model.getValueAt(t.getSelectedRow(),5);
+				String codepostal=(String)model.getValueAt(t.getSelectedRow(),6);
 				
 				//ConsulterClient.this.validate();
 				
-				new ModifierFournisseur(id,code,nom,prenom,tel,ville,adresse,codepostal).show();
+				new ModifierFournisseur(id,code,nom,tel,ville,adresse,codepostal).show();
 				
 				
 				}
@@ -137,7 +137,6 @@ public class ConsulterFournisseur extends JFrame {
 				c.setIdp(Integer.parseInt(id));
 				c.setCode(code);
 				c.setNom(nom);
-				c.setPrenom(prenom);
 				c.setCodepostal(codepostal);
 				c.setTel(tel);
 				c.setVille(ville);

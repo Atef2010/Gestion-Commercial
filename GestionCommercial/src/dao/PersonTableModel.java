@@ -2,11 +2,8 @@ package dao;
 
 import org.hibernate.*;
 import org.hibernate.cfg.*;
-
 import gestioncomm.Client;
-
 import java.util.*;
-
 import javax.swing.table.AbstractTableModel; 
 
 
@@ -27,8 +24,6 @@ public class PersonTableModel extends AbstractTableModel
         Session session=sf.openSession();
         Query q=session.createQuery("from Client where nom || cin  LIKE '%"+filtre+"%'");
         ClientList=new ArrayList<Client>(q.list());
-      
-        
         session.close();
         sf.close();
     }

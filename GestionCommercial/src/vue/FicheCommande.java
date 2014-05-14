@@ -2,6 +2,9 @@ package vue;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,8 +40,10 @@ import javax.swing.border.TitledBorder;
 import javax.swing.ImageIcon;
 
 import com.toedter.calendar.JDateChooser;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SwingConstants;
 
 
 public class FicheCommande extends JFrame {
@@ -79,6 +84,7 @@ public class FicheCommande extends JFrame {
 		this.setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
+		
 		_this = this;
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -86,21 +92,27 @@ public class FicheCommande extends JFrame {
 		contentPane.setLayout(null);
 		
 		textcode = new JTextField();
+		textcode.setHorizontalAlignment(SwingConstants.CENTER);
 		textcode.setEnabled(false);
 		textcode.setBounds(66, 40, 100, 20);
 		contentPane.add(textcode);
 		textcode.setColumns(10);
 		
 		textnom = new JTextField();
+		textnom.setHorizontalAlignment(SwingConstants.CENTER);
 		textnom.setEnabled(false);
 		textnom.setBounds(66, 80, 100, 20);
 		contentPane.add(textnom);
 		textnom.setColumns(10);
 		final JDateChooser dateChooser = new JDateChooser();
 		//////////Recupuration des donnees ///////////
-		
+		textnumcmd = new JTextField();
+		textnumcmd.setHorizontalAlignment(SwingConstants.CENTER);
+		textnumcmd.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		textnumcmd.setEnabled(false);
 		final TableModelCommande model = new TableModelCommande("");
 		final JTable t = new JTable(model);
+		textnumcmd.setText(Integer.toString(model.getRowCount()+1));
 		JScrollPane scrollPane = new JScrollPane(t);
 		//model.fireTableDataChanged();
 		scrollPane.setBounds(10, 181, 785, 185);
@@ -113,13 +125,10 @@ public class FicheCommande extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Commande c = new Commande();
-				
-				int i = model.getRowCount();
-				
-				
+				TableModelCommande model = new TableModelCommande("");
+		
 				c.setIdc(Integer.parseInt(textcode.getText()));
 				c.setNumdcmd(Integer.parseInt(textnumcmd.getText()));
-				c.setNumdcmd(i);
 				c.setQte(Integer.parseInt(textqte.getText()));
 				c.setRef(textref.getText());
 				c.setFr(textnom.getText());
@@ -128,14 +137,13 @@ public class FicheCommande extends JFrame {
 				new CommandeDAO().save(c);
 				
 				JOptionPane.showMessageDialog(null, "Commande Ajouter", "OK", JOptionPane.INFORMATION_MESSAGE);
-				
 				model.loadData("");
 				model.fireTableDataChanged();
-				 t.revalidate();
+				t.revalidate();
 			}
 			
 		});
-			
+		
 		btnValider.setBounds(822, 39, 116, 23);
 		contentPane.add(btnValider);
 		
@@ -177,7 +185,7 @@ public class FicheCommande extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		textnumcmd = new JTextField();
+		
 		textnumcmd.setBounds(122, 24, 100, 20);
 		panel_1.add(textnumcmd);
 		textnumcmd.setColumns(10);
@@ -207,6 +215,7 @@ public class FicheCommande extends JFrame {
 		panel_2.add(lblRfrence);
 		
 		textref = new JTextField();
+		textref.setHorizontalAlignment(SwingConstants.CENTER);
 		textref.setEnabled(false);
 		textref.setBounds(87, 24, 100, 20);
 		panel_2.add(textref);
@@ -217,6 +226,7 @@ public class FicheCommande extends JFrame {
 		panel_2.add(lblQuantit);
 		
 		textqte = new JTextField();
+		textqte.setHorizontalAlignment(SwingConstants.CENTER);
 		textqte.setBounds(87, 62, 100, 20);
 		panel_2.add(textqte);
 		textqte.setColumns(10);
@@ -273,6 +283,7 @@ public class FicheCommande extends JFrame {
 		textcmdparfr.setBounds(227, 134, 116, 20);
 		contentPane.add(textcmdparfr);
 		textcmdparfr.setColumns(10);
+		
 		
 		JButton btnRecherche = new JButton("Recherche");
 		btnRecherche.addActionListener(new ActionListener() {

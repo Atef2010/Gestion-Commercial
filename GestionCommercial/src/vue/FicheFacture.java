@@ -1,5 +1,6 @@
 package vue;
 
+import gestioncomm.Cheque;
 import gestioncomm.Facture;
 
 import java.awt.BorderLayout;
@@ -19,6 +20,7 @@ import javax.swing.JRadioButton;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
 
+import dao.ChequeDAO;
 import dao.FactureDAO;
 import dao.TableModelFacture;
 
@@ -44,10 +46,12 @@ public class FicheFacture extends JFrame {
 	private JTextField textcltesp;
 	private JTextField textprenomesp;
 	private JTextField textremise;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textmnt;
+	private JTextField textnomch;
+	private JTextField textprenomch;
+	private JTextField textbanque;
+	private JTextField textField_5;
+	private JTextField textField_6;
 
 	/**
 	 * Launch the application.
@@ -82,7 +86,7 @@ public class FicheFacture extends JFrame {
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Paiment", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 96, 288, 103);
+		panel.setBounds(10, 113, 288, 103);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -108,7 +112,7 @@ public class FicheFacture extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Type", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(10, 223, 288, 103);
+		panel_1.setBounds(10, 240, 288, 103);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		final JPanel panelespse = new JPanel();
@@ -131,7 +135,7 @@ public class FicheFacture extends JFrame {
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Cheque", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_2.setBounds(316, 96, 317, 230);
+		panel_2.setBounds(316, 113, 317, 230);
 		contentPane.add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -144,7 +148,7 @@ public class FicheFacture extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Information Facture", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_3.setBounds(10, 11, 623, 74);
+		panel_3.setBounds(10, 0, 623, 102);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
@@ -165,6 +169,24 @@ public class FicheFacture extends JFrame {
 		dateChooser.setBounds(432, 27, 132, 20);
 		
 		panel_3.add(dateChooser);
+		
+		JLabel lblRfrence = new JLabel("R\u00E9f\u00E9rence");
+		lblRfrence.setBounds(10, 65, 77, 14);
+		panel_3.add(lblRfrence);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(151, 62, 114, 20);
+		panel_3.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JLabel lblLibelle = new JLabel("Libelle");
+		lblLibelle.setBounds(315, 65, 46, 14);
+		panel_3.add(lblLibelle);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(432, 62, 114, 20);
+		panel_3.add(textField_6);
+		textField_6.setColumns(10);
 		/*
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 380, 623, 154);
@@ -229,29 +251,29 @@ public class FicheFacture extends JFrame {
 		label_2.setBounds(10, 117, 62, 14);
 		panelcheque.add(label_2);
 		
-		JLabel label_3 = new JLabel("Date");
+		JLabel label_3 = new JLabel("Banque");
 		label_3.setBounds(10, 155, 62, 14);
 		panelcheque.add(label_3);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(111, 30, 114, 20);
-		panelcheque.add(textField_1);
+		textmnt = new JTextField();
+		textmnt.setColumns(10);
+		textmnt.setBounds(111, 30, 114, 20);
+		panelcheque.add(textmnt);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(111, 76, 114, 20);
-		panelcheque.add(textField_2);
+		textnomch = new JTextField();
+		textnomch.setColumns(10);
+		textnomch.setBounds(111, 76, 114, 20);
+		panelcheque.add(textnomch);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(111, 114, 114, 20);
-		panelcheque.add(textField_3);
+		textprenomch = new JTextField();
+		textprenomch.setColumns(10);
+		textprenomch.setBounds(111, 114, 114, 20);
+		panelcheque.add(textprenomch);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(111, 152, 114, 20);
-		panelcheque.add(textField_4);
+		textbanque = new JTextField();
+		textbanque.setColumns(10);
+		textbanque.setBounds(111, 152, 114, 20);
+		panelcheque.add(textbanque);
 		
 		final TableModelFacture model = new TableModelFacture("");
 		final JTable t = new JTable(model);
@@ -264,6 +286,19 @@ public class FicheFacture extends JFrame {
 		contentPane.add(btnImprimer);
 		
 		JButton btnModifier = new JButton("Modifier");
+		btnModifier.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String id=(model.getValueAt(t.getSelectedRow(),0).toString());
+				String numfact=(model.getValueAt(t.getSelectedRow(),1).toString());
+				String numpaiment=(model.getValueAt(t.getSelectedRow(),2).toString());
+				String mnt=(model.getValueAt(t.getSelectedRow(),3).toString());
+				//String type=(String)model.getValueAt(t.getSelectedRow(),4);
+				
+				id=textnumfact.getSelectedText();
+				
+				
+			}
+		});
 		btnModifier.setBounds(655, 99, 101, 23);
 		contentPane.add(btnModifier);
 		
@@ -296,6 +331,12 @@ public class FicheFacture extends JFrame {
 			if(rdbtnCheque.isSelected())
 			{
 				f.setType("Cheque");
+				Cheque c = new Cheque();
+				c.setBanque(textbanque.getText());
+				c.setNom(textnomch.getText());
+				c.setPrenom(textprenomch.getText());
+				c.setMont(Double.parseDouble(textmnt.getText()));
+				new ChequeDAO().save(c);
 			}
 			else
 			{

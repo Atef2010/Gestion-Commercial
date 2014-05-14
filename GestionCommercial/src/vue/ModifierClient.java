@@ -43,8 +43,7 @@ public class ModifierClient extends JFrame {
 	private JTextField textprenom;
 	private JTextField textcodepostal;
 	private JTextField texttel;
-	private JTextField textville;
-	private JTextField idp;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -112,7 +111,8 @@ public class ModifierClient extends JFrame {
 		lblTlphone.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\iphone.png"));
 		lblTlphone.setBounds(20, 271, 101, 32);
 		contentPane.add(lblTlphone);
-		
+	
+
 		textcin = new JTextField();
 		textcin.setToolTipText("Saisie le cin");
 		
@@ -195,26 +195,21 @@ public class ModifierClient extends JFrame {
 		lblVille.setBounds(20, 314, 69, 27);
 		contentPane.add(lblVille);
 		
-		textville = new JTextField();
-		textville.setToolTipText("Saisie le ville");
-		textville.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')) 
-	              evt.consume(); 
-			}
-		});
+		
+		final JComboBox comboBoxville = new JComboBox();
+		comboBoxville.setBounds(121, 120, 126, 20);
+
+		
 		JTextArea textadresse = new JTextArea();
-		textville.setBounds(131, 317, 126, 20);
-		contentPane.add(textville);
-		textville.setColumns(10);
+		//comboBoxville.setBounds(120, 298, 125, 28);
+		//contentPane.add(comboBoxville);
+		//comboBoxville.setColumns(10);
 		textcin.setText(cin);
 		textnom.setText(nom);
 		textprenom.setText(prenom);
 		texttel.setText(tel);
-		textville.setText(ville);
+		
+		//comboBoxville.setSelectedItem(ville);
 		textcodepostal.setText(codepostal);
 		textadresse.setText(adresse);
 		
@@ -226,13 +221,13 @@ public class ModifierClient extends JFrame {
 				
 				Client c = new Client();
 				
-				c.setIdp(Integer.parseInt(idp.getText()));
+				//c.setIdp(Integer.parseInt(idp.getText()));
 				c.setCin(textcin.getText());
 				c.setNom(textnom.getText());
 				c.setPrenom(textprenom.getText());
 				c.setCodepostal(textcodepostal.getText());
 				c.setTel(texttel.getText());
-				c.setVille(textville.getText());
+				c.setVille(comboBoxville.getSelectedItem().toString());
 				
 				new ClientDAO().update(c);
 				 ModifierClient.this.revalidate();
@@ -244,7 +239,7 @@ public class ModifierClient extends JFrame {
 				textnom.setText(null);
 				textprenom.setText(null);
 				texttel.setText(null);
-				textville.setText(null);
+				comboBoxville.setSelectedItem(null);
 				 
 				
 				 
@@ -264,7 +259,7 @@ public class ModifierClient extends JFrame {
 				textnom.setText(null);
 				textprenom.setText(null);
 				texttel.setText(null);
-				textville.setText(null);
+				comboBoxville.setSelectedItem(null);
 			}
 		});
 		btnAnnuler.setBounds(662, 81, 89, 23);
@@ -280,13 +275,6 @@ public class ModifierClient extends JFrame {
 		panel.setToolTipText("Saisie le CIN");
 		panel.setBounds(10, 27, 249, 149);
 		panel_1.add(panel);
-		idp = new JTextField();
-		idp.setBounds(123, 11, 86, 20);
-		panel_1.add(idp);
-		idp.setEnabled(false);
-		idp.setColumns(10);
-		//recuperation
-		idp.setText(id);
 		
 		JLabel label = DefaultComponentFactory.getInstance().createTitle("");
 		label.setIcon(new ImageIcon("C:\\Users\\real\\Desktop\\eclipce\\Gestion-Commercial\\Gestion-Commercial\\GestionCommercial\\src\\Image\\aide-numericable.png"));
@@ -306,8 +294,46 @@ public class ModifierClient extends JFrame {
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Adresse", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLUE));
 		panel_3.setBounds(10, 196, 653, 165);
+		
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
+		panel_3.add(comboBoxville);
+		comboBoxville.setMaximumRowCount(3);
+		comboBoxville.addItem("");   
+		comboBoxville.addItem("Mahdia");
+		comboBoxville.addItem("Monastir");
+		comboBoxville.addItem("Tunis"); 
+		comboBoxville.addItem("Nabeul");
+		comboBoxville.addItem("Sousse");
+		comboBoxville.addItem("Ariana");       
+		comboBoxville.addItem("Béja");           
+		comboBoxville.addItem("Ben Arous");            
+		comboBoxville.addItem("Bizerte");
+		comboBoxville.addItem("Gabès");
+		comboBoxville.addItem("Gafsa");
+		comboBoxville.addItem("Jendouba");           
+		comboBoxville.addItem("Kairouan");            
+		comboBoxville.addItem("Kasserine");
+		comboBoxville.addItem("Kébili");
+		comboBoxville.addItem("Le Kef");
+		comboBoxville.addItem("La Manouba");            
+		comboBoxville.addItem("Médenine");
+		comboBoxville.addItem("Sfax");           
+		comboBoxville.addItem("Sidi Bouzid");            
+		comboBoxville.addItem("Siliana");
+		comboBoxville.addItem("Tataouine");
+		comboBoxville.addItem("Tozeur");           
+		comboBoxville.addItem("Zaghouan");
+		//panel_3.setLayout(null);
+		for (int index = 0; index < comboBoxville.getItemCount();index++) {
+			
+			   if (ville.equals(comboBoxville.getItemAt(index))) {
+			     //Selection l'element
+				   comboBoxville.setSelectedIndex(index);
+				   
+				   break;
+			   }
+			 }
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(10, 212, 645, 142);
 		contentPane.add(panel_2);

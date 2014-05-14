@@ -29,7 +29,7 @@
      <mapping class="gestioncomm.Smartphone"/>
      <mapping class="gestioncomm.Laptop"/>
      <mapping class="gestioncomm.Facture"/>
-    
+     <mapping class="gestioncomm.Cheque"/>
     
 
 

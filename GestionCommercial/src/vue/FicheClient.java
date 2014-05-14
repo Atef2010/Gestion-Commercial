@@ -48,7 +48,7 @@ public class FicheClient extends JFrame {
 					FicheClient frame = new FicheClient();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
+					e.printStackTrace(); 
 				}
 			}
 		});
@@ -112,6 +112,14 @@ public class FicheClient extends JFrame {
 			      {
 					 msg+="CIN Non Valide  \n"; 
 			      }
+				 if(texttel.getText().length()!=8)
+			      {
+					 msg+="Tel non valide \n"; 
+			      }
+				 if(textcodepostal.getText().length()!=4)
+			      {
+					 msg+="Code Postal incorrect   \n"; 
+			      }
 				 if(cin.compareTo("")==0)
 			      {
 			       msg+="Vous devez tapper votre CIN \n";
@@ -144,18 +152,19 @@ public class FicheClient extends JFrame {
 			  
 			      if (msg=="")
 			      {
+			    	 
 				c.setCin(textcin.getText());
 				c.setNom(textnom.getText());
 				c.setPrenom(textprenom.getText());
 				c.setCodepostal(textcodepostal.getText());
 				c.setTel(texttel.getText());
 				c.setAdresse(textadresse.getText());
+				c.setVille(comboBoxville.getSelectedItem().toString());
 			
 				new ClientDAO().save(c);
 			     
 			      JOptionPane.showMessageDialog(null,  "Client Ajouter", "OK ", JOptionPane.INFORMATION_MESSAGE);
 				
-			      System.exit(0);
 			      }   
 			}
 			

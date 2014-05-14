@@ -14,26 +14,34 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.Timer;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
+
 import java.awt.Window.Type;
 import java.text.DateFormat;
+
 import javax.swing.JLabel;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
+
 import javax.swing.*;
 import javax.swing.border.*;
+
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class GestionCommerciale extends JFrame {
 
 	   private JPanel contentPane;
-	   //private Timer minuteur = new Timer(1000, this);
-	   private JLabel heure = new JLabel();
-	   private DateFormat présentation = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM);
+	  // private Timer minuteur = new Timer(1000, (ActionListener) this);
+	   //private JLabel heure = new JLabel();
+	   //private DateFormat présentation = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM);
 	/**
 	 * Launch the application.
 	 */
@@ -55,17 +63,19 @@ public class GestionCommerciale extends JFrame {
 	 */
 	public GestionCommerciale() {
 		super();
-		heure.setFont(new Font("Goudy Stout", Font.BOLD+Font.ITALIC, 32));
-	      heure.setHorizontalAlignment(JLabel.CENTER);
-	    //  heure.setBorder(BorderFactory.createLoweredBevelBorder());
+	//	heure.setFont(new Font("Goudy Stout", Font.BOLD+Font.ITALIC, 32));
+	  //    heure.setHorizontalAlignment(JLabel.CENTER);
+	  //    heure.setBorder(BorderFactory.createLoweredBevelBorder());
 	    
-	      JLabel  background=new JLabel(new ImageIcon("C:/Users/Mohamed/Desktop/logo 600x6004.png"));
-			 background.setLayout(new FlowLayout(0,30,10));
+	  //  JLabel  background=new JLabel(new ImageIcon("D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/design_icons/logogestion.jpg"));
+		//	background.setLayout(new FlowLayout(0,30,10));
 	      
-	    
-	    // add(heure, BorderLayout.NORTH);
-	  add(heure, BorderLayout.CENTER);
-	     add(background, BorderLayout.SOUTH )  ;
+		Horloge horloge = new Horloge();
+		  JOptionPane.showMessageDialog(null, horloge, "Horloge", JOptionPane.INFORMATION_MESSAGE);   
+		    horloge.arrêt();
+	   // add(heure, BorderLayout.NORTH);
+	//  add(heure, BorderLayout.CENTER);
+	    // add(background, BorderLayout.SOUTH )  ;
 		setTitle("Gestion Commerciale");
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -183,5 +193,54 @@ public class GestionCommerciale extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("");
+		lblNewJgoodiesTitle.setBounds(0, 0, 558, 313);
+		contentPane.add(lblNewJgoodiesTitle);
 	}
 }
+class Horloge extends JComponent implements ActionListener {
+	  private Timer timer = new Timer(100, this);
+	  private double heure; 
+	  private double minute, seconde;
+	   
+	  public Horloge() {
+	    setPreferredSize(new Dimension(240, 190));
+	    timer.start();
+	  }
+	   
+	  public void arrêt() {
+	    timer.stop();
+	  }
+	   
+	  @Override
+	  protected void paintComponent(Graphics g) {
+	    Graphics2D dessin = (Graphics2D) g;
+	    dessin.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	    dessin.setStroke(new BasicStroke(5));      
+	    dessin.drawOval(5, 5, 181, 181);
+	    dessin.setStroke(new BasicStroke(2));
+	    dessin.drawLine(96, 5, 96, 183);
+	    dessin.drawLine(5, 96, 183, 96);
+	    dessin.setStroke(new BasicStroke(10, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+	    dessin.setPaint(new Color(0.0F, 0.0F, 1.0F, 0.5F));
+	    dessin.drawLine(96, 96,
+	        (int) (96 + 50*Math.cos((heure-3) * 2.0 * Math.PI / 12)), 
+	        (int) (96 + 50*Math.sin((heure-3) * 2.0 * Math.PI / 12)));
+	    dessin.drawLine(96, 96,
+	        (int) (96 + 70*Math.cos((minute-15) * 2.0 * Math.PI / 60)), 
+	        (int) (96 + 70*Math.sin((minute-15) * 2.0 * Math.PI / 60)));
+	    dessin.setPaint(new Color(1.0F, 0.0F, 0.0F, 0.5F));
+	    dessin.drawLine(96, 96,
+	        (int) (96 + 80*Math.cos((seconde-15) * 2.0 * Math.PI / 60)), 
+	        (int) (96 + 80*Math.sin((seconde-15) * 2.0 * Math.PI / 60)));
+	  }
+
+	  public void actionPerformed(ActionEvent e) {
+	    Calendar horaire = Calendar.getInstance();      
+	    minute = horaire.get(Calendar.MINUTE);
+	    seconde = horaire.get(Calendar.SECOND);
+	    heure = horaire.get(Calendar.HOUR)+minute/60;
+	    repaint();
+	  }
+	}

@@ -22,12 +22,11 @@ public class Fournisseur {
 	{
 		super();
 	}
-	public Fournisseur(String code,String nom,String prenom,String tel,String ville,String adresse,String codepostal)
+	public Fournisseur(String code,String nom,String tel,String ville,String adresse,String codepostal)
 	{
 		this.idf=idf;
 		this.code=code;
 		this.nom=nom;
-		this.prenom=prenom;
 		this.tel=tel;
 		this.ville=ville;
 		this.adresse=adresse;
@@ -52,12 +51,7 @@ public class Fournisseur {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public String getPrenom() {
-		return prenom;
-	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+	
 	public String getTel() {
 		return tel;
 	}

@@ -38,7 +38,6 @@ import java.awt.event.ActionEvent;
 public class FicheFournisseur extends JFrame {
 	private JTextField textcode;
 	private JTextField textnom;
-	private JTextField textprenom;
 	private JTextField textcodepostal;
 	private JTextField texttel;
 	
@@ -74,135 +73,9 @@ public class FicheFournisseur extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblCode = new JLabel("Code");
 		setResizable(false);
 		this.setLocationRelativeTo(null);
-		lblCode.setIcon(null);
-		lblCode.setBounds(20, 46, 69, 37);
-		contentPane.add(lblCode);
-		
-		JLabel lblNom = new JLabel("Nom");
-		lblNom.setIcon(null);
-		lblNom.setBounds(20, 94, 89, 32);
-		contentPane.add(lblNom);
-		
-		JLabel lblPrenom = new JLabel("Prenom");
-		lblPrenom.setIcon(null);
-		lblPrenom.setBounds(20, 137, 89, 29);
-		contentPane.add(lblPrenom);
-		
-		JLabel lblCodePostal = new JLabel("Code Postal");
-		lblCodePostal.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\flag-blue.png"));
-		lblCodePostal.setBounds(20, 222, 101, 33);
-		contentPane.add(lblCodePostal);
-		
-		JLabel lblTlphone = new JLabel("T\u00E9l\u00E9phone");
-		lblTlphone.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\iphone.png"));
-		lblTlphone.setBounds(20, 271, 101, 32);
-		contentPane.add(lblTlphone);
-		
-		textcode = new JTextField();
-		textcode.setToolTipText("Saisie le code");
-		textcode.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent evt) {
-
-             char car = evt.getKeyChar(); 
-             
-             if((car<'0' || car>'9')) 
-              evt.consume(); 
-            
-			}
-				
-		});
-		textcode.setBounds(131, 54, 126, 20);
-		contentPane.add(textcode);
-		textcode.setColumns(10);
-		
-		textnom = new JTextField();
-		textnom.setToolTipText("Saisie le nom");
-		textnom.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
-	              evt.consume(); 
-			}
-		});
-		textnom.setBounds(131, 100, 126, 20);
-		contentPane.add(textnom);
-		textnom.setColumns(10);
-		
-		textprenom = new JTextField();
-		textprenom.setToolTipText("Saisie le prenom");
-		textprenom.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
-	              evt.consume(); 
-			}
-		});
-		textprenom.setBounds(131, 141, 126, 20);
-		contentPane.add(textprenom);
-		textprenom.setColumns(10);
-		
-		textcodepostal = new JTextField();
-		textcodepostal.setToolTipText("Saisie le code postal");
-		textcodepostal.setBounds(131, 228, 126, 20);
-		contentPane.add(textcodepostal);
-		textcodepostal.setColumns(10);
-		
-		texttel = new JTextField();
-		texttel.setToolTipText("Saisie le numero de telephone");
-		texttel.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent evt) {
-
-	             char car = evt.getKeyChar(); 
-	             
-	             if((car<'0' || car>'9')) 
-	              evt.consume(); 
-	            
-				}
-		});
-		texttel.setBounds(131, 277, 126, 20);
-		contentPane.add(texttel);
-		texttel.setColumns(10);
-		
-		JLabel lblAdresse = new JLabel("Adresse");
-		lblAdresse.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\32x32\\address.png"));
-		lblAdresse.setBounds(295, 274, 89, 27);
-		contentPane.add(lblAdresse);
-		
-		JLabel lblVille = new JLabel("Ville");
-		lblVille.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\pc.de-essen-icon-pack\\32x32\\home.png"));
-		lblVille.setBounds(20, 314, 69, 27);
-		contentPane.add(lblVille);
-		
-		textville = new JTextField();
-		textville.setToolTipText("Saisie le ville");
-		textville.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent evt) {
-				char car = evt.getKeyChar(); 
-	             
-	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')) 
-	              evt.consume(); 
-			}
-		});
-		textville.setBounds(131, 317, 126, 20);
-		contentPane.add(textville);
-		textville.setColumns(10);
-		
 		final JTextArea textadresse = new JTextArea();
-		textadresse.setToolTipText("Saisie l'adresse");
-		textadresse.setFont(new Font("Times New Roman", Font.ITALIC, 13));
-		textadresse.setBounds(394, 276, 258, 68);
-		contentPane.add(textadresse);
 		
 		JButton btnValider = new JButton("Valider");
 		btnValider.addActionListener(new ActionListener() {
@@ -212,7 +85,6 @@ public class FicheFournisseur extends JFrame {
 				// TODO Auto-generated method stub
 				String code=textcode.getText();
 				String nom=textnom.getText();
-				String prenom = textprenom.getText();
 				String tel = texttel.getText();
 				String codepostal=textcodepostal.getText();
 				String ville = textville.getText();
@@ -229,10 +101,7 @@ public class FicheFournisseur extends JFrame {
 			      {
 			       msg+="Vous devez tapper votre nom \n";
 			      }
-			      if(prenom.compareTo("")==0)
-			      {
-			       msg+="Vous devez tapper votre prenom \n";
-			      }
+			     
 			      if(codepostal.compareTo("")==0)
 			      {
 			       msg+="Vous devez tapper votre Code Postal \n";
@@ -260,7 +129,7 @@ public class FicheFournisseur extends JFrame {
 				
 				c.setCode(textcode.getText());
 				c.setNom(textnom.getText());
-				c.setPrenom(textprenom.getText());
+
 				c.setCodepostal(textcodepostal.getText());
 				c.setTel(texttel.getText());
 				c.setVille(textville.getText());
@@ -281,7 +150,6 @@ public class FicheFournisseur extends JFrame {
 				textcode.setText(null);
 				textcodepostal.setText(null);
 				textnom.setText(null);
-				textprenom.setText(null);
 				texttel.setText(null);
 				textville.setText(null);
 				textadresse.setText(null);
@@ -300,9 +168,111 @@ public class FicheFournisseur extends JFrame {
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Information Fournisseur", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 255)));
-		panel_3.setBounds(10, 1, 653, 360);
+		panel_3.setBounds(9, 1, 653, 360);
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
+		
+		JLabel lblCodePostal = new JLabel("Code Postal");
+		lblCodePostal.setBounds(10, 127, 101, 33);
+		panel_3.add(lblCodePostal);
+		
+		textcodepostal = new JTextField();
+		textcodepostal.setBounds(123, 129, 126, 28);
+		panel_3.add(textcodepostal);
+		textcodepostal.setToolTipText("Saisie le code postal");
+		textcodepostal.setColumns(10);
+		
+		JLabel lblTlphone = new JLabel("T\u00E9l\u00E9phone");
+		lblTlphone.setBounds(10, 173, 101, 32);
+		panel_3.add(lblTlphone);
+		
+		texttel = new JTextField();
+		texttel.setBounds(123, 175, 126, 28);
+		panel_3.add(texttel);
+		texttel.setToolTipText("Saisie le numero de telephone");
+		texttel.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+
+	             char car = evt.getKeyChar(); 
+	             
+	             if((car<'0' || car>'9')) 
+	              evt.consume(); 
+	            
+				}
+		});
+		texttel.setColumns(10);
+		
+		JLabel lblVille = new JLabel("Ville");
+		lblVille.setBounds(10, 222, 69, 27);
+		panel_3.add(lblVille);
+		
+		textville = new JTextField();
+		textville.setBounds(123, 221, 126, 28);
+		panel_3.add(textville);
+		textville.setToolTipText("Saisie le ville");
+		textville.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')) 
+	              evt.consume(); 
+			}
+		});
+		textville.setColumns(10);
+		
+		JLabel lblAdresse = new JLabel("Adresse");
+		lblAdresse.setBounds(10, 274, 89, 27);
+		panel_3.add(lblAdresse);
+		
+	
+		textadresse.setBounds(123, 267, 258, 68);
+		panel_3.add(textadresse);
+		textadresse.setToolTipText("Saisie l'adresse");
+		textadresse.setFont(new Font("Times New Roman", Font.ITALIC, 13));
+		
+		JLabel lblCode = new JLabel("Code");
+		lblCode.setBounds(10, 33, 69, 37);
+		panel_3.add(lblCode);
+		lblCode.setIcon(null);
+		textcode = new JTextField();
+		textcode.setBounds(123, 37, 126, 28);
+		panel_3.add(textcode);
+		textcode.setToolTipText("Saisie le code");
+		textcode.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+
+             char car = evt.getKeyChar(); 
+             
+             if((car<'0' || car>'9')) 
+              evt.consume(); 
+            
+			}
+				
+		});
+		textcode.setColumns(10);
+		
+		JLabel lblNom = new JLabel("Nom");
+		lblNom.setBounds(10, 81, 89, 32);
+		panel_3.add(lblNom);
+		lblNom.setIcon(null);
+		
+		textnom = new JTextField();
+		textnom.setBounds(123, 83, 126, 28);
+		panel_3.add(textnom);
+		textnom.setToolTipText("Saisie le nom");
+		textnom.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+				char car = evt.getKeyChar(); 
+	             
+	             if((car<'a' || car>'z')&&(car<'A'||car>'Z')&&(car>' ')) 
+	              evt.consume(); 
+			}
+		});
+		textnom.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(10, 212, 645, 142);

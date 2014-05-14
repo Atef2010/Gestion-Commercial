@@ -133,8 +133,8 @@ public class Authentification extends JFrame {
 				
 				if (textFieldpseudo.getText().equals("admin") && (passwordField.getText().equals("admin")))
 	  	        {
-	  	            //	InterfacePrincipale interfacePrincipale = new InterfacePrincipale() ;
-	  		           //	interfacePrincipale.setVisible(true); 
+	  	           GestionCommerciale g = new GestionCommerciale();
+	  	         g.setVisible(true); 
 	    	    }
 	  		    else
 	  	        {

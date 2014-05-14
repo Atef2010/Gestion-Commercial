@@ -124,14 +124,12 @@ public class ConsulterClient extends JDialog {
 				mc.addWindowListener(new WindowAdapter() {
 					public void windowClosed(WindowEvent e)
 					{
-						//JOptionPane.showMessageDialog(null, "bbbbbClient Supprimer ", "OK", JOptionPane.INFORMATION_MESSAGE);
 						model.loadData("");
 						model.fireTableDataChanged();
 						 t.revalidate();
 					}
 				});
 				mc.setVisible(true);
-				//JOptionPane.showMessageDialog(null, "bbbbbClient Supprimer ", "OK", JOptionPane.INFORMATION_MESSAGE);
 				
 				}
 			
@@ -167,9 +165,11 @@ public class ConsulterClient extends JDialog {
 				c.setVille(ville);
 				 
 				new ClientDAO().delete(c);
-				ConsulterClient.this.dispose();
+				
 				JOptionPane.showMessageDialog(null, "Client Supprimer ", "OK", JOptionPane.INFORMATION_MESSAGE);
-				new ConsulterClient();
+				model.loadData("");
+				model.fireTableDataChanged();
+				 t.revalidate();
 			}
 		
 		});
