@@ -34,54 +34,48 @@ import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+public class GestionCommerciale extends JFrame implements ActionListener {
 
-public class GestionCommerciale extends JFrame {
-
-	   private JPanel contentPane;
-	  // private Timer minuteur = new Timer(1000, (ActionListener) this);
-	   //private JLabel heure = new JLabel();
-	   //private DateFormat présentation = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM);
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GestionCommerciale frame = new GestionCommerciale();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	  
+	 
+private Timer minuteur = new Timer(1000, this);
+   private JLabel heure = new JLabel();
+   private DateFormat présentation = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.MEDIUM);
+   
 
 	/**
 	 * Create the frame.
 	 */
+	
+	  
 	public GestionCommerciale() {
+		
 		super();
-	//	heure.setFont(new Font("Goudy Stout", Font.BOLD+Font.ITALIC, 32));
-	  //    heure.setHorizontalAlignment(JLabel.CENTER);
-	  //    heure.setBorder(BorderFactory.createLoweredBevelBorder());
-	    
-	  //  JLabel  background=new JLabel(new ImageIcon("D:/WorksSapceZE/Gestion-Commercial/GestionCommercial/design_icons/logogestion.jpg"));
-		//	background.setLayout(new FlowLayout(0,30,10));
-	      
-		Horloge horloge = new Horloge();
-		  JOptionPane.showMessageDialog(null, horloge, "Horloge", JOptionPane.INFORMATION_MESSAGE);   
-		    horloge.arrêt();
-	   // add(heure, BorderLayout.NORTH);
-	//  add(heure, BorderLayout.CENTER);
-	    // add(background, BorderLayout.SOUTH )  ;
+		setResizable(false);
+		getContentPane().setBackground(Color.WHITE);
 		setTitle("Gestion Commerciale");
+			heure.setForeground(Color.BLUE);
+		
+			heure.setFont(new Font("Shonar Bangla", Font.BOLD | Font.ITALIC, 36));
+      		heure.setHorizontalAlignment(JLabel.CENTER);
+      		
 		this.setLocationRelativeTo(null);
-		this.setVisible(true);
+	
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 966, 734);
-		
+			Horloge h = new Horloge();
+				
+			getContentPane().add(h);
+			getContentPane().add(heure,BorderLayout.SOUTH);
+			
+			getContentPane().setLayout(null);
+			h.setBounds(400,20,198,191);
+			heure.setBounds(268,582,450,69);
+			
+			JLabel lblNewLabel = new JLabel("");
+			lblNewLabel.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\logo.jpg"));
+			lblNewLabel.setBounds(304, 259, 400, 250);
+			getContentPane().add(lblNewLabel);
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
@@ -89,7 +83,8 @@ public class GestionCommerciale extends JFrame {
 		menuBar.add(mnClient);
 		
 		JMenuItem mntmAjouterClient = new JMenuItem("Ajouter Client");
-		mntmAjouterClient.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\add.png"));
+		//mntmAjouterClient.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\add.png"));
+		mntmAjouterClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("//design_icons//designkode-free-icons//add.png")));
 		mntmAjouterClient.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				FicheClient c = new FicheClient();
@@ -171,8 +166,26 @@ public class GestionCommerciale extends JFrame {
 		mntmAjouterArticle.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\designkode-free-icons\\add.png"));
 		mnArticle.add(mntmAjouterArticle);
 		
+		JMenuItem mntmConsulterArticle = new JMenuItem("Consulter Article");
+		mntmConsulterArticle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListeArticles l = new ListeArticles(null);
+				l.show();
+			}
+		});
+		mnArticle.add(mntmConsulterArticle);
+		
 		JMenu mnFacture = new JMenu("Facture");
 		menuBar.add(mnFacture);
+		
+		JMenuItem mntmAjouterFacture = new JMenuItem("Ajouter Facture");
+		mntmAjouterFacture.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				FicheFacture f = new FicheFacture();
+				f.show();
+			}
+		});
+		mnFacture.add(mntmAjouterFacture);
 		
 		JMenu mnCommande = new JMenu("Commande");
 		menuBar.add(mnCommande);
@@ -189,58 +202,28 @@ public class GestionCommerciale extends JFrame {
 		
 		JMenu mnStock = new JMenu("Stock");
 		menuBar.add(mnStock);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
-		JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("");
-		lblNewJgoodiesTitle.setBounds(0, 0, 558, 313);
-		contentPane.add(lblNewJgoodiesTitle);
+		
+    	minuteur.start();
+      setSize(1000, 700);
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
+      setLocationRelativeTo(null);
+      setResizable(false);
+	}
+
+ public void actionPerformed(ActionEvent e) {
+            présentation = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.MEDIUM);
+         heure.setText(présentation.format(new Date()));
+     }
+
+public static void main(String[] args) {
+	
+			
+					GestionCommerciale frame = new GestionCommerciale();
+					frame.setVisible(true);
+			
+	
 	}
 }
-class Horloge extends JComponent implements ActionListener {
-	  private Timer timer = new Timer(100, this);
-	  private double heure; 
-	  private double minute, seconde;
-	   
-	  public Horloge() {
-	    setPreferredSize(new Dimension(240, 190));
-	    timer.start();
-	  }
-	   
-	  public void arrêt() {
-	    timer.stop();
-	  }
-	   
-	  @Override
-	  protected void paintComponent(Graphics g) {
-	    Graphics2D dessin = (Graphics2D) g;
-	    dessin.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	    dessin.setStroke(new BasicStroke(5));      
-	    dessin.drawOval(5, 5, 181, 181);
-	    dessin.setStroke(new BasicStroke(2));
-	    dessin.drawLine(96, 5, 96, 183);
-	    dessin.drawLine(5, 96, 183, 96);
-	    dessin.setStroke(new BasicStroke(10, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-	    dessin.setPaint(new Color(0.0F, 0.0F, 1.0F, 0.5F));
-	    dessin.drawLine(96, 96,
-	        (int) (96 + 50*Math.cos((heure-3) * 2.0 * Math.PI / 12)), 
-	        (int) (96 + 50*Math.sin((heure-3) * 2.0 * Math.PI / 12)));
-	    dessin.drawLine(96, 96,
-	        (int) (96 + 70*Math.cos((minute-15) * 2.0 * Math.PI / 60)), 
-	        (int) (96 + 70*Math.sin((minute-15) * 2.0 * Math.PI / 60)));
-	    dessin.setPaint(new Color(1.0F, 0.0F, 0.0F, 0.5F));
-	    dessin.drawLine(96, 96,
-	        (int) (96 + 80*Math.cos((seconde-15) * 2.0 * Math.PI / 60)), 
-	        (int) (96 + 80*Math.sin((seconde-15) * 2.0 * Math.PI / 60)));
-	  }
 
-	  public void actionPerformed(ActionEvent e) {
-	    Calendar horaire = Calendar.getInstance();      
-	    minute = horaire.get(Calendar.MINUTE);
-	    seconde = horaire.get(Calendar.SECOND);
-	    heure = horaire.get(Calendar.HOUR)+minute/60;
-	    repaint();
-	  }
-	}
+

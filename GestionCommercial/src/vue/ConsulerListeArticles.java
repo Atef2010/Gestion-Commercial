@@ -57,7 +57,7 @@ public class ConsulerListeArticles extends JFrame {
 		scrollPane.setBounds(5, 11, 707, 324);
 		contentPane.add(scrollPane);
 		
-		JButton btnAjouter = new JButton("Ajouter");
+		JButton btnAjouter = new JButton("Valider");
 		btnAjouter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				parent.textqte.setText((model.getValueAt(t.getSelectedRow(),5).toString()));
@@ -67,9 +67,5 @@ public class ConsulerListeArticles extends JFrame {
 		});
 		btnAjouter.setBounds(752, 11, 89, 23);
 		contentPane.add(btnAjouter);
-		
-		JButton btnModifier = new JButton("Modifier");
-		btnModifier.setBounds(752, 61, 89, 23);
-		contentPane.add(btnModifier);
 	}
 }

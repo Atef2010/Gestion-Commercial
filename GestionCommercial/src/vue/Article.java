@@ -39,6 +39,8 @@ import java.awt.event.ItemEvent;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Article extends JFrame {
 
@@ -318,43 +320,44 @@ public class Article extends JFrame {
 		
 		JPanel panel_8 = new JPanel();
 		panel_8.setForeground(SystemColor.menu);
-		//panel_8.setBackground(Color.BLACK);
 		panel_8.setBounds(10, 21, 373, 138);
 		panel_9.add(panel_8);
 		panel_8.setLayout(null);
 		
 		JLabel lblEtatDeLarticle = new JLabel("Etat de l'article :");
 		lblEtatDeLarticle.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblEtatDeLarticle.setBounds(87, 69, 119, 55);
+		lblEtatDeLarticle.setBounds(55, 72, 119, 55);
 		panel_8.add(lblEtatDeLarticle);
 		
 		final JComboBox comboBoxetat = new JComboBox();
-		comboBoxetat.setBounds(216, 86, 130, 20);
+		comboBoxetat.setBounds(184, 89, 130, 20);
 		panel_8.add(comboBoxetat);
 		
 		comboBoxetat.addItem("");
 		comboBoxetat.addItem("Disponible");
 		comboBoxetat.addItem("Non Disponible");
 		
-		JLabel label_14 = new JLabel("");
-		label_14.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\icon_256.png"));
-		label_14.setBounds(57, 80, 20, 29);
-		panel_8.add(label_14);
-		
 		JLabel lblQuantitDeProduit = new JLabel("Quantit\u00E9 de produit :");
 		lblQuantitDeProduit.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblQuantitDeProduit.setBounds(87, 29, 130, 40);
+		lblQuantitDeProduit.setBounds(55, 32, 130, 40);
 		panel_8.add(lblQuantitDeProduit);
 		
 		textqte = new JTextField();
-		textqte.setBounds(216, 39, 130, 20);
+		textqte.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent evt) {
+			
+
+		             char car = evt.getKeyChar(); 
+		             
+		             if((car<'0' || car>'9')) 
+		              evt.consume(); 
+		            
+			}
+		});
+		textqte.setBounds(184, 42, 130, 20);
 		panel_8.add(textqte);
 		textqte.setColumns(10);
-		
-		JLabel label_6 = new JLabel("");
-		label_6.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\icon_256.png"));
-		label_6.setBounds(57, 30, 20, 29);
-		panel_8.add(label_6);
 		
 		JPanel panel_11 = new JPanel();
 		panel_11.setBackground(Color.BLACK);
@@ -370,33 +373,23 @@ public class Article extends JFrame {
 		panel_11.add(panel_10);
 		panel_10.setLayout(null);
 		
-		JLabel label_15 = new JLabel("");
-		label_15.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\icon_256.png"));
-		label_15.setBounds(79, 35, 20, 30);
-		panel_10.add(label_15);
-		
 		JLabel lblPrixht = new JLabel("Prix-HT :");
 		lblPrixht.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblPrixht.setBounds(109, 35, 74, 30);
+		lblPrixht.setBounds(89, 35, 74, 30);
 		panel_10.add(lblPrixht);
 		
 		textprixht = new JTextField();
-		textprixht.setBounds(193, 40, 118, 20);
+		textprixht.setBounds(173, 40, 118, 20);
 		panel_10.add(textprixht);
 		textprixht.setColumns(10);
 		
-		JLabel label_16 = new JLabel("");
-		label_16.setIcon(new ImageIcon("D:\\WorksSapceZE\\Gestion-Commercial\\GestionCommercial\\design_icons\\icon_256.png"));
-		label_16.setBounds(79, 76, 20, 28);
-		panel_10.add(label_16);
-		
 		JLabel lblPrixttc = new JLabel("Prix-TTC :");
 		lblPrixttc.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblPrixttc.setBounds(109, 76, 74, 28);
+		lblPrixttc.setBounds(89, 76, 74, 28);
 		panel_10.add(lblPrixttc);
 		
 		textprixttc = new JTextField();
-		textprixttc.setBounds(193, 80, 118, 20);
+		textprixttc.setBounds(173, 80, 118, 20);
 		panel_10.add(textprixttc);
 		textprixttc.setColumns(10);
 		
@@ -508,6 +501,7 @@ public class Article extends JFrame {
 		g.add(rdbtnlaptop);
 		g.add(rdbtnSmartPhone);
 		g.add(rdbtnPcBureau);
+		
 		final JComboBox comboBoxmemoire = new JComboBox();
 		comboBoxmemoire.setBounds(215, 177, 112, 20);
 		comboBoxmemoire.addItem("");
@@ -519,7 +513,7 @@ public class Article extends JFrame {
 		panel_4.add(comboBoxmemoire);
 		panel_5.show(false);
 		
-		panel_3.show(false);
+		panel_3.show(true);
 		panel_7.show(false);
 		
 		rdbtnPcBureau.addItemListener(new ItemListener() {

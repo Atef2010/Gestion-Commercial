@@ -21,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Authentification extends JFrame {
 
@@ -49,6 +51,7 @@ public class Authentification extends JFrame {
 	 * Create the frame.
 	 */
 	public Authentification() {
+		setResizable(false);
 		setBackground(new Color(255, 255, 255));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 351);
@@ -108,6 +111,15 @@ public class Authentification extends JFrame {
 		contentPane.add(btnAnnuler);
 		
 		passwordField = new JPasswordField();
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				 if (e.getKeyCode()== KeyEvent.VK_ENTER) {
+                    GestionCommerciale g = new GestionCommerciale();
+                    g.show();
+              }
+			}
+		});
 		
 		passwordField.setBounds(479, 156, 129, 20);
 		contentPane.add(passwordField);
@@ -135,6 +147,7 @@ public class Authentification extends JFrame {
 	  	        {
 	  	           GestionCommerciale g = new GestionCommerciale();
 	  	         g.setVisible(true); 
+	  	       Authentification.this.dispose();
 	    	    }
 	  		    else
 	  	        {
